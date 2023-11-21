@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "Red Hats Display";
+  src: url(../assets/fonts/RedHatDisplay/RedHatDisplay-SemiBold.ttf);
+  font-weight: bold;
+  font-display: swap;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Red Hats Display", sans-serif;
+}
+
+:root {
+  --primary-100: #1E2022;
+  --primary-200: #34373b;
+  --primary-300: #F0F5F9;
+  --accent-100: #788189;
+  --accent-200: #e1e4e6;
+  --text-100: #1E2022;
+  --text-200: #52616B;
+  --bg-100: #F0F5F9;
+  --bg-200: #C9D6DF;
+  --bg-300: #bfc7d1;
+}
+
+[data-theme="darkMode"] {
+  --primary-100: #e1dfdd;
+  --primary-200: #cbc8c4;
+  --primary-300: #0f0a06;
+  --accent-100: #877e76;
+  --accent-200: #1e1b1a;
+  --text-100: #e1dfdd;
+  --text-200: #ad9e94;
+  --bg-100: #0f0a06;
+  --bg-200: #362927;
+  --bg-300: #40382e;
+}
+
+html {
+  font-size: 100%;
+  background-color: var(--bg-100);
+  margin: auto;
+  line-height: 1.5em;
+}
+
+#logo {
+  width: 5%;
+  text-indent: -999em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(../assets/images/logo_transparent.png);
+  font-size: 3em;
+  filter: invert(1);
+  line-height: 1.5em;
+  margin-left: .5em;
+}
+
+#menu {
+  margin: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-200);
+  border-radius: 9999px;
+}
+
+#menu ul {
+  list-style: none;
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+#menu ul li {
+  margin-left: .5em;
+  margin-right: .5em;
+  min-width: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-100);
+}
+
+#logo:hover {
+  filter: invert(0);
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--bg-100);
+}
+
+#breadcrumb {
+  display: block;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  width: 1px !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  padding: 0 !important;
+  margin: -1px !important;
+}
