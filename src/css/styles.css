@@ -114,3 +114,27 @@ a:hover {
   padding: 0 !important;
   margin: -1px !important;
 }
+
+
+
+#contatti {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin: 5em;
+}
+
+#contatti li {
+  height: 30%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#contatti img {
+  width: 30%;
+  height: 30%;
+  object-fit: contain;
+}
