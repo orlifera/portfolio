@@ -20,15 +20,47 @@
             <li id="portfolio"><a href="portfolio.html">Progetti</a></li>
             <li id="skills"><a href="skills.html" lang="en">Skills</a></li>
             <li id="contacts"><a href="contacts.html">Contatti</a></li>
+            <li id="switch"><a href="javascript:switchTheme()">🌙</a></li>
         </ul>
     </nav>
     <nav id="breadcrumb" class="sr-only">
         <p>Ti trovi in: <span lang="en">Contattami</span></p>
     </nav>
 
-
     <main>
+        <div id="contacts">
+            <p>Puoi trovarmi qua:</p>
+            <ul id="contatti">
+                <li><a id="insta" href="https://www.instagram.com/oferazzani125/" target="_blank"><img
+                            src="../assets/images/instagram.png" alt="Instagram">Instagram</a></li>
+                <li><a id="link" href="https://www.linkedin.com/in/orlando-v-m-ferazzani-3734a5282//"
+                        target="_blank"><img src="../assets/images/linkedin-logo.png" alt="Linkedin">LinkedIn</a></li>
+                <li><a id="whatsapp" href="https://wa.me/+393927958165"><img src="../assets/images/wa.png">WhatsApp</a>
+                </li>
+                <li><a id="Email" href="mailto:orlandovm.ferazzani@gmail.com"><img
+                            src="../assets/images/email.png">Email</a></li>
+        </div>
+        <div id="form">
+            <form method="POST">
+                <fieldset id="personal">
+                    <label for="firstname">Nome:</label>
+                    <input type="text" name="firstname" id="firstname" placeholder="Mario" required>
+                    <label for="lastname">Cognome:</label>
+                    <input type="text" name="lastname" id="lastname" placeholder="Rossi" required>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="mario.rossi@esempio.it" required>
+                    <label for="phone">Telefono:</label>
+                    <input type="tel" name="phone" id="phone" placeholder="3331234567">
+                </fieldset>
+                <fieldset id="message">
+                    <label for="subject">Oggetto:</label>
+                    <input type="text" name="subject" id="subject" placeholder="Oggetto" required>
+                    <label for="message">Messaggio:</label>
+                    <textarea name="message" id="message" placeholder="Scrivi qui il tuo messaggio" required></textarea>
+                </fieldset>
+                <input type="submit" value="Invia">
 
+            </form>
     </main>
 </body>
 
