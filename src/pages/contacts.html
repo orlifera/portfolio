@@ -46,35 +46,42 @@
                 </ul>
             </div>
         </div>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script type="text/javascript" src="../js/form-handler.js"></script>
         <div id="form">
             <h2 id="headingForm">Oppure scrivimi qua:</h2>
             <form id="contact-form" method="POST">
                 <fieldset id="personal">
-                    <label for="firstname">Nome:
-                        <input type="text" name="firstname" id="firstname" placeholder="Mario" required>
-                    </label>
-                    <label for="lastname">Cognome:
-                        <input type="text" name="lastname" id="lastname" placeholder="Rossi" required>
-                    </label>
-                    <label for="email">Email:
-                        <input type="email" name="email" id="email" placeholder="mario.rossi@esempio.it" required>
-                    </label>
-                    <label for="phone">Telefono:
-                        <input type="tel" name="phone" id="phone" placeholder="3331234567">
+                    <label for="firstname">Nome:</label>
+                    <input type="text" name="firstname" id="firstname" placeholder="Mario" required>
+                    <label for="lastname">Cognome:</label>
+                    <input type="text" name="lastname" id="lastname" placeholder="Rossi" required>
+                    <label for="business">Azienda:</label>
+                    <input type="text" name="business" id="business" placeholder="Azienda">
+                </fieldset>
 
+                <fieldset id="personal-contacts">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="mario.rossi@esempio.it" required>
+                    <label for="phone">Telefono:</label>
+                    <input type="tel" name="phone" id="phone" placeholder="3331234567">
                 </fieldset>
 
                 <fieldset id="message">
-                    <p id="headingForm">Lascia qua il tuo messaggio:</p>
                     <label for="subject">Oggetto:</label>
                     <input type="text" name="subject" id="subject" placeholder="Oggetto" required>
                     <label for="message">Messaggio:</label>
-                    <textarea name="message" id="message" placeholder="Scrivi qui il tuo messaggio" required></textarea>
+                    <textarea name="message" id="message" placeholder="Scrivi qui il tuo messaggio" rows="5"
+                        cols="40"></textarea>
                 </fieldset>
                 <input type="submit" value="Invia">
 
             </form>
+            <!-- <div class="g-recaptcha" data-sitekey="your_site_key"></div> -->
     </main>
+    <footer>
+        <p>Orlando Ferazzani</p>
+    </footer>
 </body>
 
 </html>

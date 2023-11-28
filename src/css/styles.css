@@ -22,6 +22,7 @@
   --accent-200: #e1e4e6;
   --text-100: #1E2022;
   --text-200: #52616B;
+  --text-300: #f9f9f9;
   --bg-100: #F0F5F9;
   --bg-200: #C9D6DF;
   --bg-300: #bfc7d1;
@@ -123,12 +124,14 @@ a:hover {
   padding: .5em;
 }
 
-#contacts {
+div#contacts {
   margin: 2em auto;
-  width: 40%;
-  height: 40%;
+  width: 35em;
+  height: 20em;
   background-color: var(--bg-200);
   border-radius: 30px;
+  max-width: 50em;
+  min-width: 20em;
 }
 
 #contact-list {
@@ -151,6 +154,10 @@ a:hover {
   padding-top: 1em;
 }
 
+#contatti li a img:hover {
+  filter: invert(1);
+}
+
 #headingForm {
   text-align: center;
   width: 100%;
@@ -159,24 +166,76 @@ a:hover {
 }
 
 #form {
-  width: 40%;
-  height: 40%;
-  margin: auto;
+  width: 35em;
+  height: 48em;
+  margin: 3em auto;
   background-color: var(--bg-200);
   border-radius: 30px;
+  max-width: 50em;
+  min-width: 20em;
 }
 
 #contact-form {
   width: 70%;
   height: 70%;
   margin: auto;
+  max-width: 500px;
+  min-width: 300px;
 }
 
 #contact-form label {
-  display: block;
+  display: inline-block;
   margin: .5em;
+  width: 100%;
 }
 
 #contact-form fieldset {
   border: none;
+  text-align: center;
+  display: block;
+}
+
+#personal label {
+  display: inline;
+  margin: .5em;
+  width: 100%;
+}
+
+#contact-form input,
+#contact-form textarea {
+  display: block;
+  width: 100%;
+  margin: .5em;
+  padding: .5em;
+  border-radius: 30px;
+  border: 1px solid var(--bg-100);
+  background-color: var(--bg-100);
+  color: var(--text-100);
+  resize: none;
+}
+
+placeholder {
+  margin: auto 0;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border: 1px solid var(--primary-100);
+}
+
+#contact-form input[type="submit"] {
+  width: 50%;
+  margin: 1em auto;
+  padding: .75em;
+  border-radius: 30px;
+  border: 1px solid var(--bg-100);
+  background-color: var(--bg-100);
+  color: var(--text-100);
+  cursor: pointer;
+}
+
+#contact-form input[type="submit"]:hover {
+  background-color: var(--primary-100);
+  color: var(--bg-100);
 }

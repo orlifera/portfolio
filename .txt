@@ -1,0 +1,11 @@
+Avrei potuto benissimo usare un framework o qualche editor drag and drop. Probabilmente sarebbe venuto anche più clean,
+ma ho preferito allenare le mie skill programmando questa "beta" del mio portfolio con HTML, CSS e JS. Più avanti
+ho in programma di rinnovarlo con TSX, React e Tailwind.
+
+Per chiunque legga questo file, becca sto gattino in ascii art: 
+
+           __..--''``---....___   _..._    __
+ /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+///_.-' _..--.'_    \                    `( ) ) // //
+/ (_..-' // (< _     ;_..__               ; `' / ///
+ / // // //  `-._,_)' // / ``--...____..-' /// / //
