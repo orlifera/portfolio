@@ -48,7 +48,7 @@ html {
 }
 
 #logo {
-  width: 5%;
+  width: 2em;
   text-indent: -999em;
   background-size: contain;
   background-repeat: no-repeat;
@@ -65,7 +65,7 @@ html {
   justify-content: space-between;
   align-items: center;
   background-color: var(--bg-200);
-  border-radius: 9999px;
+  border-radius: 30px;
 }
 
 #menu ul {
@@ -116,25 +116,67 @@ a:hover {
 }
 
 
+#heading {
+  text-align: center;
+  width: 70%;
+  color: var(--text-100);
+  padding: .5em;
+}
 
-#contatti {
-  display: inline-block;
-  align-items: center;
+#contacts {
+  margin: 2em auto;
+  width: 40%;
+  height: 40%;
+  background-color: var(--bg-200);
+  border-radius: 30px;
+}
+
+#contact-list {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5em;
+}
+
+#contatti .icon {
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+  padding: .2em;
 }
 
 #contatti li {
-  height: 30%;
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  padding-inline: 1em;
+  padding-top: 1em;
 }
 
-#contatti img {
-  width: 30%;
-  height: 30%;
-  object-fit: contain;
+#headingForm {
+  text-align: center;
+  width: 100%;
+  color: var(--text-100);
+  padding: .5em;
+}
+
+#form {
+  width: 40%;
+  height: 40%;
+  margin: auto;
+  background-color: var(--bg-200);
+  border-radius: 30px;
+}
+
+#contact-form {
+  width: 70%;
+  height: 70%;
+  margin: auto;
+}
+
+#contact-form label {
+  display: block;
+  margin: .5em;
+}
+
+#contact-form fieldset {
+  border: none;
 }

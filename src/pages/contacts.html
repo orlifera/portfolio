@@ -29,30 +29,43 @@
 
     <main>
         <div id="contacts">
-            <p>Puoi trovarmi qua:</p>
-            <ul id="contatti">
-                <li><a id="insta" href="https://www.instagram.com/oferazzani125/" target="_blank"><img
-                            src="../assets/images/instagram.png" alt="Instagram">Instagram</a></li>
-                <li><a id="link" href="https://www.linkedin.com/in/orlando-v-m-ferazzani-3734a5282//"
-                        target="_blank"><img src="../assets/images/linkedin-logo.png" alt="Linkedin">LinkedIn</a></li>
-                <li><a id="whatsapp" href="https://wa.me/+393927958165"><img src="../assets/images/wa.png">WhatsApp</a>
-                </li>
-                <li><a id="Email" href="mailto:orlandovm.ferazzani@gmail.com"><img
-                            src="../assets/images/email.png">Email</a></li>
+            <div id="contact-list">
+                <h2 id="heading">Puoi trovarmi qua:</h2>
+                <ul id="contatti">
+                    <li><a lang="en" id="insta" href="https://www.instagram.com/oferazzani125/" target="_blank"><img
+                                class="icon" src="../assets/images/insta.png" alt="Instagram">Instagram</a></li>
+                    <li><a lang="en" id="link" href="https://www.linkedin.com/in/orlando-v-m-ferazzani-3734a5282//"
+                            target="_blank"><img class="icon" src="../assets/images/link.png"
+                                alt="Linkedin">LinkedIn</a>
+                    </li>
+                    <li><a lang="en" id="whatsapp" href="https://wa.me/+393927958165"><img class="icon"
+                                src="../assets/images/wa.png">WhatsApp</a>
+                    </li>
+                    <li><a lang="en" id="Email" href="mailto:orlandovm.ferazzani@gmail.com"><img class="icon"
+                                src="../assets/images/email.png">Email</a></li>
+                </ul>
+            </div>
         </div>
         <div id="form">
-            <form method="POST">
+            <h2 id="headingForm">Oppure scrivimi qua:</h2>
+            <form id="contact-form" method="POST">
                 <fieldset id="personal">
-                    <label for="firstname">Nome:</label>
-                    <input type="text" name="firstname" id="firstname" placeholder="Mario" required>
-                    <label for="lastname">Cognome:</label>
-                    <input type="text" name="lastname" id="lastname" placeholder="Rossi" required>
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" placeholder="mario.rossi@esempio.it" required>
-                    <label for="phone">Telefono:</label>
-                    <input type="tel" name="phone" id="phone" placeholder="3331234567">
+                    <label for="firstname">Nome:
+                        <input type="text" name="firstname" id="firstname" placeholder="Mario" required>
+                    </label>
+                    <label for="lastname">Cognome:
+                        <input type="text" name="lastname" id="lastname" placeholder="Rossi" required>
+                    </label>
+                    <label for="email">Email:
+                        <input type="email" name="email" id="email" placeholder="mario.rossi@esempio.it" required>
+                    </label>
+                    <label for="phone">Telefono:
+                        <input type="tel" name="phone" id="phone" placeholder="3331234567">
+
                 </fieldset>
+
                 <fieldset id="message">
+                    <p id="headingForm">Lascia qua il tuo messaggio:</p>
                     <label for="subject">Oggetto:</label>
                     <input type="text" name="subject" id="subject" placeholder="Oggetto" required>
                     <label for="message">Messaggio:</label>
