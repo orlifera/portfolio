@@ -12,6 +12,12 @@
   box-sizing: border-box;
   list-style: none;
   font-family: "Red Hats Display", sans-serif;
+  transition: var(--default-transition);
+}
+
+:root {
+  --default-transition: color .1s ease-in-out, background-color .3s ease-in-out, fill .3s ease-in-out,
+    border-color .3s ease-in-out, transform .3s ease-in-out;
 }
 
 :root[data-theme="light"] {
@@ -32,11 +38,9 @@
   --muted-text: #b1b0b5;
   --icon-sun: #ee8e44;
   --icon-moon: #b7b7b7;
-}
-
-:root {
   --switch-pos: .25em;
 }
+
 
 :root[data-theme="dark"] {
   --logo: invert(0);
@@ -57,6 +61,7 @@
   --muted-text: #77757E;
   --icon-sun: var(--muted-text);
   --icon-moon: #b7b7b7;
+  --switch-pos: 2.7em;
 }
 
 html {
@@ -187,13 +192,13 @@ div#contacts {
   filter: invert(1);
 }
 
-/* [data-theme="dark"] #contatti img {
+[data-theme="dark"] #contatti img {
   filter: invert(.8);
 }
 
 [data-theme="dark"] #contatti img:hover {
   filter: invert(0);
-} */
+}
 
 #contatti li {
   display: block;
@@ -296,6 +301,7 @@ placeholder {
   cursor: pointer;
   padding: .5em;
   position: relative;
+  transition: var(--default-transition);
 }
 
 #theme-switcher::before {
@@ -307,11 +313,13 @@ placeholder {
   border-radius: 50px;
   z-index: 0;
   left: 0;
-  transform: translateX(var(--switch-pos))
+  transform: translateX(var(--switch-pos));
+  transition: var(--default-transition);
 }
 
 #theme-switcher svg {
   z-index: 1;
+  transition: var(--default-transition);
 }
 
 

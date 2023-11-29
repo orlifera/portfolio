@@ -7,7 +7,18 @@
     <meta name="description" content="Portfolio Personale di Orlando V. M. Ferazzani">
     <link rel="stylesheet" href="../css/styles.css" media="screen">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 600px)">
-    <title>Orlando | Portfolio</title>
+    <title>Orlando | Contatti</title>
+    <script>
+        //check local storage for theme
+        let localS = localStorage.getItem('theme');
+        if (localS == 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (localS == 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
 </head>
 
 <body>
@@ -95,6 +106,8 @@
     <footer>
         <p>Orlando Ferazzani</p>
     </footer>
+
+    <script src="../js/toggle-mode.js"></script>
 </body>
 
 </html>
