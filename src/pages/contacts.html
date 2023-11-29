@@ -9,15 +9,18 @@
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 600px)">
     <title>Orlando | Contatti</title>
     <script>
-        //check local storage for theme
-        let localS = localStorage.getItem('theme');
-        if (localS == 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        } else if (localS == 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
+        //check local storage for theme and OS preference
+        let localS = localStorage.getItem('theme'),
+            themeToSet = localS
+
+        //if LS not set => check OS preference
+        if (!localS) {
+            //media query with JS
+            themeToSet = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
         }
+
+        //set correct theme
+        document.documentElement.setAttribute('data-theme', themeToSet)
     </script>
 </head>
 
