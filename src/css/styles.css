@@ -16,7 +16,7 @@
 }
 
 :root {
-  --default-transition: color .1s ease-in-out, background-color .3s ease-in-out, fill .3s ease-in-out,
+  --default-transition: color .1s ease-in-out, background-color .3s ease-in-out, fill .1s ease-in-out,
     border-color .3s ease-in-out, transform .3s ease-in-out;
 }
 
@@ -63,6 +63,16 @@
   --icon-moon: #b7b7b7;
   --switch-pos: 2.7em;
 }
+
+
+/*ACTIVE PAGE*/
+
+/* a:is(:active, :focus, :link, :visited).active {
+  color: var(--primary-100);
+  text-decoration: underline;
+} */
+
+/* GENERAL */
 
 html {
   font-size: 100%;
