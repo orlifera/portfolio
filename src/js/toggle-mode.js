@@ -23,3 +23,9 @@ const switchTheme = () => {
 //event listener to listen for the click on the switch button
 
 document.querySelector('#theme-switcher').addEventListener('click', switchTheme);
+
+document.querySelector('#theme-switcher').addEventListener('keypress', function (event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+        switchTheme();
+    }
+});

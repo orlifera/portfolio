@@ -28,8 +28,8 @@
   --accent-100: #788189;
   --accent-200: #e1e4e6;
   --text-100: #1E2022;
-  --text-200: #52616B;
-  --text-300: #f9f9f9;
+  --text-200: #f9f9f9;
+  --text-300: #6b6b6b;
   --bg-100: #F0F5F9;
   --bg-200: #C9D6DF;
   --bg-300: #bfc7d1;
@@ -50,7 +50,7 @@
   --accent-100: #c0c0c0;
   --accent-200: #d3d3d3;
   --text-100: #e1dfdd;
-  --text-200: #ad9e94;
+  --text-200: #766c6c;
   --text-300: #f9f9f9;
   --link-hover: #f9f9f9;
   --bg-100: #262626;
@@ -81,6 +81,8 @@ html {
   line-height: 1.5em;
 }
 
+
+/*NAVBAR*/
 #logo {
   width: 2em;
   text-indent: -999em;
@@ -142,7 +144,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: var(--link-hover);
+  color: var(--text-200);
 }
 
 #breadcrumb {
@@ -163,6 +165,8 @@ a:hover {
 }
 
 
+
+/*CONTACTS*/
 #heading {
   text-align: center;
   width: 70%;
@@ -207,7 +211,7 @@ div#contacts {
 }
 
 [data-theme="dark"] #contatti img:hover {
-  filter: invert(0);
+  filter: invert(.5);
 }
 
 #contatti li {
@@ -273,8 +277,11 @@ div#contacts {
   resize: none;
 }
 
-placeholder {
+#contact-form input::placeholder,
+#contact-form textarea::placeholder {
   margin: auto 0;
+  color: var(--text-100);
+  opacity: .85;
 }
 
 #contact-form input:focus,
@@ -282,6 +289,7 @@ placeholder {
   outline: none;
   border: 1px solid var(--primary-100);
 }
+
 
 #contact-form input[type="submit"] {
   width: 50%;
@@ -300,8 +308,8 @@ placeholder {
 }
 
 
-/*TOGGLE SWITCH*/
 
+/*TOGGLE SWITCH*/
 #theme-switcher {
   background-color: var(--bg-100);
   border-radius: 50px;
@@ -332,12 +340,25 @@ placeholder {
   transition: var(--default-transition);
 }
 
-
-
 #sun {
   fill: var(--icon-sun);
 }
 
 #moon {
   fill: var(--icon-moon);
+}
+
+/*ACTIVE*/
+.active {
+  color: var(--text-200);
+  box-shadow: inset 0 -2px 0 var(--text-200);
+}
+
+/*ABOUT*/
+
+#about-image {
+  width: 20em;
+  height: 20em;
+  object-fit: cover;
+  border-radius: 30px;
 }
