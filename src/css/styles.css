@@ -356,9 +356,9 @@ div#contacts {
 
 /*ABOUT*/
 
-#about-image {
-  width: 20em;
-  height: 20em;
+#about-image img {
+  width: 2em;
+  height: 2em;
   object-fit: cover;
   border-radius: 30px;
 }
