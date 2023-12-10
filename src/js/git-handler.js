@@ -15,9 +15,25 @@ function handleCommand(command) {
             if (commandParts[1] === 'pull') {
                 outputDiv.textContent = "Orlando - Studente presso l'università di Padova e appassionato di web Development"; // Your brief description
             } else if (commandParts[1] === 'checkout') {
-                if (commandParts[2]) {
-                    window.location.href = 'src/pages/' + commandParts[2] + '.html'; // Switches to the page specified after 'git checkout'
+                if (commandParts[2] === 'about me') {
+                    window.location.href = 'src/pages/about.html';
                 }
+                else if (commandParts[2] === 'skills') {
+                    window.location.href = 'src/pages/skills.html';
+                }
+                else if (commandParts[2] === 'progetti') {
+                    window.location.href = 'src/pages/portfolio.html';
+                }
+                else if (commandParts[2] === 'contatti') {
+                    window.location.href = 'src/pages/contacts.html';
+                }
+                else {
+                    outputDiv.textContent = 'Command not recognized.';
+                }
+
+                // if (commandParts[2]) {
+                //     window.location.href = 'src/pages/' + commandParts[2] + '.html'; // Switches to the page specified after 'git checkout'
+                // }
             }
             break;
         default:
