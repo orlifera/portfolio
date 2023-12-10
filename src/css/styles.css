@@ -18,6 +18,16 @@
 :root {
   --default-transition: color .1s ease-in-out, background-color .3s ease-in-out, fill .1s ease-in-out,
     border-color .3s ease-in-out, transform .3s ease-in-out;
+  --terminal-background: #2c1425fb;
+  --terminal-text: #f9f9f9;
+  --terminal-cursor: #f9f9f9;
+  --terminal-arrow: #0ac743;
+  --terminal-path: #46add3;
+  --terminal-branch: #ff2e2e;
+  --terminal-git: #241ec2;
+  --upper-bar-background: #505050;
+  --upper-bar-close: #ff5f56;
+  --upper-bar-other: #7d7d7d;
 }
 
 :root[data-theme="light"] {
@@ -350,9 +360,115 @@ div#contacts {
 
 /*ACTIVE*/
 .active {
-  color: var(--text-200);
   box-shadow: inset 0 -2px 0 var(--text-200);
 }
+
+.active a {
+  color: var(--text-200);
+}
+
+/*HOME*/
+
+.container {
+  margin: 5em;
+}
+
+#upper-bar {
+  width: 100em;
+  height: 2em;
+  margin: auto;
+  background-color: var(--upper-bar-background);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em;
+}
+
+#icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 6em;
+}
+
+#close {
+  text-align: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: var(--upper-bar-close);
+  cursor: pointer;
+}
+
+#minimize,
+#maximize {
+  text-align: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: var(--upper-bar-other);
+  cursor: pointer;
+}
+
+#terminal {
+  width: 100em;
+  height: 40em;
+  background-color: var(--terminal-background);
+  position: relative;
+  margin: auto;
+}
+
+.text {
+  width: 100%;
+  height: 10%;
+  padding: 1em .5em;
+  display: inline-block;
+  font-size: 2em;
+  line-height: 1em;
+  color: var(--terminal-text)
+}
+
+#arrow {
+  color: var(--terminal-arrow);
+}
+
+#path {
+  color: var(--terminal-path)
+}
+
+#git {
+  color: var(--terminal-git)
+}
+
+#branch {
+  color: var(--terminal-branch)
+}
+
+.cursor {
+  display: inline-block;
+  /* Makes cursor behave like a text character */
+  position: relative;
+  /* Ensures that the cursor can be positioned relative to its current position */
+  left: 0;
+  /* Start at the beginning of the text */
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+    /* Blink effect by changing opacity */
+  }
+}
+
+#git-input {
+  width: 50%;
+  background-color: var(--terminal-background);
+  border: none;
+  color: var(--terminal-text);
+  font-size: 1em;
+}
+
 
 /*ABOUT*/
 
