@@ -15,7 +15,7 @@ function handleCommand(command) {
             if (commandParts[1] === 'pull') {
                 outputDiv.textContent = "Orlando - Studente presso l'università di Padova e appassionato di web Development"; // Your brief description
             } else if (commandParts[1] === 'checkout') {
-                if (commandParts[2] === 'about me') {
+                if (commandParts[2] === 'about') {
                     window.location.href = 'src/pages/about.html';
                 }
                 else if (commandParts[2] === 'skills') {
