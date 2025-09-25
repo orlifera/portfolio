@@ -46,7 +46,7 @@ export default function Nav() {
                     <NavItems items={navItems} className="text-lg" />
                     <div className="flex items-center gap-4 z-100 mx-4 justify-center">
                         <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/80" asChild>
-                            <Link href="#contacts" target="_blank" rel="noreferrer noopener">
+                            <Link href="#contatti" target="_blank" rel="noreferrer noopener">
                                 Message Me
                                 <ArrowUpRight className="ml-2 h-4 w-4" />
                             </Link>
@@ -81,7 +81,7 @@ export default function Nav() {
                         ))}
                         <div className="flex w-full mx-auto justify-center items-center flex-col gap-4">
                             <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/80 w-full" asChild>
-                                <Link href="#contacts" target="_blank" rel="noreferrer noopener">
+                                <Link href="#contatti" target="_blank" rel="noreferrer noopener">
                                     Message Me
                                     <ArrowUpRight className="ml-2 h-4 w-4" />
                                 </Link>

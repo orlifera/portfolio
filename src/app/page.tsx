@@ -36,7 +36,7 @@ export default function Home() {
       />
       <About />
       <Projects />
-      <div id="contacts" className="h-screen">
+      <div id="contatti" className="h-screen">
         Contacts
       </div>
     </>
