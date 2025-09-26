@@ -1,3 +1,5 @@
+import { JSX } from "react"
+
 export type HeroType = {
     title: string
     subtitle: string
@@ -37,5 +39,20 @@ export type ProjectCardType = {
 export type SkillPillType = {
     node?: JSX.Element | null
     title: string
-    href?: string | null
+    text?: string
+}
+
+
+export type experienceType = {
+    year: string
+    position: string
+    company: string
+    description: string
+    image?: string
+    tags: string[]
+}
+
+export type timelineType = {
+    title: string
+    content: JSX.Element;
 }

@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import AboutCard from '@/components/AboutCard';
 import LogoLoop from '@/components/LogoLoop';
-import { cards } from '@/data/cards';
-import { techLogos } from '@/data/logos';
+import { cards } from '@/data/';
+import { techLogos } from '@/data/';
 
 export default function About() {
     return (
         <div id='about' className='w-full min-h-screen flex flex-col'>
             <div className='flex flex-col items-center'>
-                <h2 className='text-xl my-8'>Get to Know me</h2>
+                <h2 className='text-xl mt-6'>Get to Know me</h2>
                 <h1 className='text-4xl font-extrabold mb-8'>About Me</h1>
             </div>
             <div className='flex md:flex-row flex-col flex-1 w-full'>
@@ -36,7 +36,7 @@ export default function About() {
                             />
                         ))}
                     </div>
-                    <div className='w-full mt-4 px-8 overflow-hidden text-white'>
+                    <div className='w-full my-4 px-8 overflow-hidden text-white'>
                         <LogoLoop
                             logos={techLogos}
                             speed={70}

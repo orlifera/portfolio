@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 
 
 const geistMono = Geist_Mono({
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Nav />
           {children}
           <Footer />
+          <Toaster richColors position="top-center" />
         </ThemeProvider>
       </body>
     </html>

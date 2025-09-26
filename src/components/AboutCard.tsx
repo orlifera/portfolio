@@ -24,7 +24,7 @@ export default function AboutCard({ icon, title, description, tags }: AboutCardT
             <CardFooter className="flex flex-wrap gap-2 justify-center">
                 {tags.map((tag, index) => (
                     <Link href={`https://www.google.com/search?q=${tag}`} key={index} target="_blank" rel="noopener noreferrer">
-                        <SkillPill title={tag} />
+                        <SkillPill title={tag} text="text-xs" />
                     </Link>
                 ))}
             </CardFooter>

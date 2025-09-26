@@ -15,6 +15,7 @@ import { SiGithub } from 'react-icons/si'
 import { LuConstruction } from 'react-icons/lu'
 import { LinkIcon } from 'lucide-react'
 
+
 export default function ProjectCard(
     { image, title, description, tags, githubLink, demoLink, wip }: ProjectCardType
 ) {
@@ -22,7 +23,7 @@ export default function ProjectCard(
     console.log(githubLink, demoLink);
 
     return (
-        <Card className="flex flex-col justify-between h-full shadow-lg ">
+        <Card className="flex flex-col justify-between  shadow-lg ">
             <CardHeader className="flex flex-col gap-4 mx-auto w-full items-center justify-center">
                 <CardTitle className="flex justify-center">{title}</CardTitle>
                 <Carousel className="relative w-full" opts={{ loop: true }}>
@@ -31,10 +32,10 @@ export default function ProjectCard(
                             <CarouselItem key={idx} className="w-full flex flex-shrink-0 px-2">
                                 <Image
                                     src={img}
-                                    width={400}
-                                    height={300}
+                                    width={800}
+                                    height={400}
                                     alt={`${title} screenshot ${idx + 1}`}
-                                    className="rounded-lg w-full my-2 justify-center items-center mx-auto max-h-[25em]"
+                                    className="rounded-lg w-full my-2 justify-center items-center mx-auto "
                                 />
                             </CarouselItem>
                         ))}
@@ -59,7 +60,7 @@ export default function ProjectCard(
                 <div className="flex flex-wrap gap-2 justify-center">
                     {tags.map((tag, index) => (
                         <Link href={`https://www.google.com/search?q=${tag}`} key={index} target="_blank" rel="noopener noreferrer">
-                            <SkillPill title={tag} />
+                            <SkillPill title={tag} text='text-xs' />
                         </Link>
                     ))}
                 </div>

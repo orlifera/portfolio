@@ -116,7 +116,18 @@
   * {
     @apply border-border outline-ring/50;
     scroll-behavior: smooth;
-    scroll-margin-top: 5rem;
+  }
+
+  #about {
+    scroll-margin-top: 6em;
+  }
+
+  #projects {
+    scroll-margin-top: 6em;
+  }
+
+  #experience {
+    scroll-margin-top: 3em;
   }
 
   body {

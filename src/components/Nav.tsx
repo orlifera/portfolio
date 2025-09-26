@@ -14,7 +14,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { SiSpotify } from "react-icons/si";
+// import { SiSpotify } from "react-icons/si";
 
 export default function Nav() {
     const navItems = [
@@ -28,11 +28,12 @@ export default function Nav() {
         }, {
             name: "Experience",
             link: "#experience",
-        },
-        {
-            name: <SiSpotify size={20} />,
-            link: "#music",
         }
+        // ,
+        // {
+        //     name: <SiSpotify size={20} />,
+        //     link: "#music",
+        // }
 
     ];
 
@@ -46,7 +47,7 @@ export default function Nav() {
                     <NavItems items={navItems} className="text-lg" />
                     <div className="flex items-center gap-4 z-100 mx-4 justify-center">
                         <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/80" asChild>
-                            <Link href="#contatti" target="_blank" rel="noreferrer noopener">
+                            <Link href="#contatti" rel="noreferrer noopener">
                                 Message Me
                                 <ArrowUpRight className="ml-2 h-4 w-4" />
                             </Link>
@@ -56,7 +57,7 @@ export default function Nav() {
                 </NavBody>
 
                 {/* Mobile Navigation */}
-                <MobileNav className="bg-foreground/60">
+                <MobileNav className="bg-muted-foreground/70 djdjjd">
                     <MobileNavHeader>
                         <NavbarLogo />
                         <MobileNavToggle
@@ -68,6 +69,7 @@ export default function Nav() {
                     <MobileNavMenu
                         isOpen={isMobileMenuOpen}
                         onClose={() => setIsMobileMenuOpen(false)}
+                        className="bg-muted-foreground/90 dark:bg-muted-foreoground/10"
                     >
                         {navItems.map((item, idx) => (
                             <Link
@@ -81,7 +83,7 @@ export default function Nav() {
                         ))}
                         <div className="flex w-full mx-auto justify-center items-center flex-col gap-4">
                             <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/80 w-full" asChild>
-                                <Link href="#contatti" target="_blank" rel="noreferrer noopener">
+                                <Link href="#contatti" rel="noreferrer noopener">
                                     Message Me
                                     <ArrowUpRight className="ml-2 h-4 w-4" />
                                 </Link>

@@ -224,9 +224,9 @@ export const MobileNavToggle = ({
   onClick: () => void;
 }) => {
   return isOpen ? (
-    <IconX className="text-primary" onClick={onClick} />
+    <IconX className="text-primary-foreground" onClick={onClick} />
   ) : (
-    <IconMenu2 className="text-primary" onClick={onClick} />
+    <IconMenu2 className="text-primary-foreground" onClick={onClick} />
   );
 };
 
@@ -236,7 +236,7 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <p className="text-yellow-300 font-bold text-lg"><span className="text-gray-200">&lt;</span>OVMF <span className="text-amber-600">id=</span><span className="text-green-600">&quot;cool&quot;</span> <span className="text-gray-200"> /&gt;</span></p>
+      <p className="text-yellow-400 font-bold text-lg"><span className="dark:text-gray-400 text-white">&lt;</span>OVMF <span className="text-amber-600">id=</span><span className="text-green-600">&quot;cool&quot;</span> <span className="dark:text-gray-400 text-white"> /&gt;</span></p>
     </Link>
   );
 };

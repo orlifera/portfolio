@@ -1,24 +1,10 @@
 import About from "@/components/About";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
-import { HeroType } from "@/types"
+import Contacts from "@/components/Contacts";
+import { obj } from "@/data";
+import Experience from "@/components/Experience";
 
-const obj: HeroType = {
-  title: "Orlando V. M Ferazzani",
-  subtitle: "Frontend Developer based in Padua. I have a BsC in Computer Science, with a a couple of years of experience in web development as a self-taught developer.",
-  src: "/uw.PNG",
-  alt: "Profile Image",
-  button1: {
-    text: "See My Work",
-    link: "/projects"
-  },
-  button2: {
-    text: "My CV",
-    link: "/CV_ENG.pdf"
-  },
-  icon: { key: true, link: "#about" },
-  socials: true
-}
 
 export default function Home() {
   return (
@@ -34,11 +20,14 @@ export default function Home() {
         socials={obj.socials}
         classname="brightness-75"
       />
+      <div className="h-20" />
       <About />
       <Projects />
-      <div id="contatti" className="h-screen">
-        Contacts
-      </div>
+      <div className="h-20" />
+      <Experience />
+      <div className="h-100" />
+      <Contacts />
+      <div id="spotify" className="hidden">Music</div>
     </>
   );
 }
