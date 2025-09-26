@@ -25,7 +25,6 @@ export default function Home() {
       <Projects />
       <div className="h-20" />
       <Experience />
-      <div className="h-100" />
       <Contacts />
       <div id="spotify" className="hidden">Music</div>
     </>

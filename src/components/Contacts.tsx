@@ -200,7 +200,7 @@ export default function Contacts() {
                         <Button
                             type="submit"
                             variant="outline"
-                            className="bg-primary-foreground text-primary font-semibold py-2 px-4 rounded-lg"
+                            className="bg-primary-foreground dark:bg-muted hover:text-black text-primary font-semibold py-2 px-4 rounded-lg"
                             disabled={loading}
                         >
                             {loading ? "Sending..." : <>Send <BiPaperPlane className="ml-2" /></>}

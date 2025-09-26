@@ -1,10 +1,19 @@
+"use client"
+
 import { HeroType } from "@/types"
 import Image from "next/image"
 import { ArrowDown, Download, Globe, Instagram, Linkedin } from "lucide-react"
 import Link from "next/link"
 import { Button } from "./ui/button"
+import { useState } from "react"
+import CVDownloadModal from "./CVDownloadModal"
 
 export default function Hero(obj: HeroType) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleCVClick = () => {
+        setIsModalOpen(true);
+    };
     return (
         <div className="relative px-2 w-full md:min-h-screen h-svh mx-auto flex flex-col items-center justify-center text-primary mt-8 lg:mt-0">
             <div className="relative z-20 text-center flex flex-col items-center justify-center px-6 max-w-4xl">
@@ -31,11 +40,13 @@ export default function Hero(obj: HeroType) {
                     }
                     {
                         obj.button2 &&
-                        <Button variant={"outline"} className="mt-2 p-6 rounded-lg text-primary" asChild>
-                            <Link href={obj.button2.link}>
-                                {obj.button2.text}
-                                <Download className="ml-2 h-4 w-4" />
-                            </Link>
+                        <Button
+                            variant={"outline"}
+                            className="mt-2 p-6 rounded-lg text-primary"
+                            onClick={handleCVClick}
+                        >
+                            {obj.button2.text}
+                            <Download className="ml-2 h-4 w-4" />
                         </Button>
                     }
                 </div>
@@ -59,6 +70,12 @@ export default function Hero(obj: HeroType) {
                     <Link href={obj.icon.link}><ArrowDown /></Link>
                 </div>
             }
+
+            {/* CV Download Modal */}
+            <CVDownloadModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </div >
     )
 }

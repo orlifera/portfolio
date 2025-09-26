@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import BackToTop from "@/components/BackToTop";
 
 
 const geistMono = Geist_Mono({
@@ -37,6 +38,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <Toaster richColors position="top-center" />
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>

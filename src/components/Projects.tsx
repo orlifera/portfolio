@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function Projects() {
     return (
         <div id='projects' className='min-h-screen mt-8 flex flex-col w-full'>
-            <h2 className='text-xl mt-6 mx-auto' > Hey, take a look around. {" "}
+            <h2 className='text-xl mt-6 mx-auto text-center px-4' > Hey, take a look around. {" "}
                 <span className='group'>
                     It&apos;s not much, but it&apos; honest work.
                     <div className='w-[40%] hidden group-hover:block flex-col items-center mx-auto justify-center mt-6'>

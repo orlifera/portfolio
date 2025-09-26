@@ -16,6 +16,7 @@ import { ProjectCardType } from "@/types";
 import Image from "next/image";
 import SkillPill from "@/components/SkillPill";
 import { JSX } from "react";
+import { TbScubaDiving } from "react-icons/tb";
 
 
 
@@ -31,12 +32,12 @@ export const cards: AboutCardType[] = [
         title: "Education and Experience",
         description: "BsC in Computer Science from University of Padua, ~2 years of experience as a self-taught developer",
         tags: ["BsC", "Computer Science", "Web Development"]
-    },
-    {
-        icon: <FaLaptopCode className='h-8 w-8' />,
-        title: "Projects",
-        description: "Various WebApps built, including my BsC Thesis project. Always trying to learn and improve",
-        tags: ["WebApp", "Feeldive"]
+    }, {
+
+        icon: <TbScubaDiving className='h-8 w-8' />,
+        title: "Hobbies",
+        description: "Scuba diving, hiking and gaming are what keeps me going in my free time, and coffee, lots of coffee.",
+        tags: ["Divemaster", "Deep Guide", "Mountain", "Sport", "Coffee"]
     }
 ]
 
@@ -110,14 +111,14 @@ export const techLogos = [
 
 
 export const projects: ProjectCardType[] = [
-    {
-        title: "MLTech Store",
-        description: "E-commerce website made during my third year as a course project. It's the clone of my company's website, specializing in custom-built PCs and accessories.",
-        tags: ["NextJS", "TypeScript", "TailwindCSS", "Stripe", "Netlify"],
-        image: ["/mltech.png"],
-        githubLink: "https://github.com/orlifera/TecWeb",
-        wip: false,
-    },
+    // {
+    //     title: "MLTech Store",
+    //     description: "E-commerce website made during my third year as a course project. It's the clone of my company's website, specializing in custom-built PCs and accessories.",
+    //     tags: ["NextJS", "TypeScript", "TailwindCSS", "Stripe", "Netlify"],
+    //     image: ["/mltech.png"],
+    //     githubLink: "https://github.com/orlifera/TecWeb",
+    //     wip: false,
+    // },
     {
         title: "Playground",
         description: "A web app I created to experiment with different things, like TicTacToe, a Kanban Board and a spotify widget.",
@@ -135,14 +136,15 @@ export const projects: ProjectCardType[] = [
         githubLink: "https://github.com/orlifera/Thinky",
         demoLink: "https://prodotto.netlify.app/",
         wip: false,
-    }, {
-        title: "Playground 2.0",
-        description: "Another website I made to experiment and develop my skills. It features a notes section, a dynamic wishlist with an addForm and a watchlist that uses localStorage to save your movies.",
-        tags: ["NextJS", "TypeScript", "TailwindCSS", "Netlify", "API"],
-        image: ["/playground2-1.png", "/playground2-2.png", "/playground2-3.png", "/playground2-4.png"],
-        githubLink: "https://github.com/orlifera/project",
-        wip: false,
     },
+    // {
+    //     title: "Playground 2.0",
+    //     description: "Another website I made to experiment and develop my skills. It features a notes section, a dynamic wishlist with an addForm and a watchlist that uses localStorage to save your movies.",
+    //     tags: ["NextJS", "TypeScript", "TailwindCSS", "Netlify", "API"],
+    //     image: ["/playground2-1.png", "/playground2-2.png", "/playground2-3.png", "/playground2-4.png"],
+    //     githubLink: "https://github.com/orlifera/project",
+    //     wip: false,
+    // },
     {
         title: "Feeldive diving center",
         description: "Modern website built for the diving center I work at. It features a e-commerce system to buy courses, and all other info about the center",
@@ -159,6 +161,14 @@ export const projects: ProjectCardType[] = [
         githubLink: "https://github.com/orlifera/quotegen",
         demoLink: "https://quotegenml.netlify.app/",
         wip: true,
+    },
+    {
+        title: "GitHub Profile",
+        description: "Visit my GitHub profile to see more projects and code samples.",
+        tags: ["GitHub", "Projects", "Code"],
+        image: ["/github.png"],
+        githubLink: "https://github.com/orlifera",
+        wip: false,
     }
 ];
 
