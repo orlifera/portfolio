@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 
 export default function Projects() {
-    console.log(projects);
     return (
         <div id='projects' className='min-h-screen mt-8 flex flex-col w-full'>
             <h2 className='text-xl mt-6 mx-auto' > Hey, take a look around. {" "}

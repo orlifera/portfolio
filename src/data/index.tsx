@@ -43,7 +43,7 @@ export const cards: AboutCardType[] = [
 
 export const obj: HeroType = {
     title: "Orlando V. M Ferazzani",
-    subtitle: "Frontend Developer based in Padua. I have a BsC in Computer Science, with a a couple of years of experience in web development as a self-taught developer.",
+    subtitle: "Frontend Developer based in Padua. I have a BsC in Computer Science, with a couple of years of self-taught experience in web development.",
     src: "/uw.PNG",
     alt: "Profile Image",
     button1: {

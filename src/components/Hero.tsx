@@ -6,7 +6,7 @@ import { Button } from "./ui/button"
 
 export default function Hero(obj: HeroType) {
     return (
-        <div className="relative px-2 w-full md:min-h-screen h-svh mx-auto flex flex-col items-center justify-center text-primary">
+        <div className="relative px-2 w-full md:min-h-screen h-svh mx-auto flex flex-col items-center justify-center text-primary mt-8 lg:mt-0">
             <div className="relative z-20 text-center flex flex-col items-center justify-center px-6 max-w-4xl">
                 <div className="relative md:w-64 md:h-64 h-48 w-48 rounded-full mb-6 overflow-hidden">
                     <Image
@@ -16,14 +16,14 @@ export default function Hero(obj: HeroType) {
                         objectFit="cover"
                     />
                 </div>
-                <p className="text-2xl mb-4 font-light">Hello🤙🏽 I&apos;m</p>
-                <h1 className="text-5xl font-extrabold mb-6">{obj.title}</h1>
-                <p className="text-md w-full max-w-2xl mx-auto font-light leading-relaxed mb-8">
+                <p className="md:text-2xl font-semibold mb-4">Hello🤙🏽 I&apos;m</p>
+                <h1 className="md:text-5xl text-2xl font-extrabold mb-6">{obj.title}</h1>
+                <p className="text-md w-full max-w-2xl mx-auto font-light mb-4">
                     {obj.subtitle}
                 </p>
                 <div className='flex flex-row items-center justify-center gap-4'>
                     {obj.button1 &&
-                        <Button variant={"default"} className="mt-4 p-6 rounded-lg" asChild>
+                        <Button variant={"default"} className="mt-2 p-6 rounded-lg" asChild>
                             <Link href={obj.button1.link}>
                                 {obj.button1.text}
                             </Link>
@@ -31,7 +31,7 @@ export default function Hero(obj: HeroType) {
                     }
                     {
                         obj.button2 &&
-                        <Button variant={"outline"} className="mt-4 p-6 rounded-lg text-primary" asChild>
+                        <Button variant={"outline"} className="mt-2 p-6 rounded-lg text-primary" asChild>
                             <Link href={obj.button2.link}>
                                 {obj.button2.text}
                                 <Download className="ml-2 h-4 w-4" />
@@ -43,7 +43,7 @@ export default function Hero(obj: HeroType) {
 
             {/* <div className='absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/70 z-10' /> */}
             {obj.socials &&
-                <ul className='absolute bottom-0 m-4 gap-4 z-50 flex flex-row right-0 text-primary'>
+                <ul className='absolute bottom-6 m-4 gap-4 z-50 flex flex-row right-0 text-primary'>
                     <li>
                         <Link href='https://instagram.com/oferazzani125'><Instagram className=" hover:cursor-pointer " /></Link>
                     </li>

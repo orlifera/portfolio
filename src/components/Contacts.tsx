@@ -24,8 +24,6 @@ export default function Contacts() {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            console.log("FormData entries:", [...formData.entries()]);
-            console.log("Data object:", data);
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -33,10 +31,13 @@ export default function Contacts() {
             });
 
             const result = await res.json();
-            console.log("Response body:", result);
 
             if (res.ok && result.success) {
-                toast.success("Messaggio inviato con successo!");
+                const { name, lastname, email, message } = data;
+                void lastname
+                void email
+                void message;
+                toast.success(`Grazie ${name}! Il tuo messaggio è stato inviato con successo!`);
                 form.reset();
                 return;
             }

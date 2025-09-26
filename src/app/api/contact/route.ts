@@ -5,7 +5,7 @@ import nodemailer from "nodemailer";
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { nome, cognome, email, phone, message } = body;
+        const { name, lastname, email, phone, message } = body;
 
         const transporter = nodemailer.createTransport({
             service: "gmail",
@@ -16,12 +16,12 @@ export async function POST(req: Request) {
         });
 
         await transporter.sendMail({
-            from: `"FeelDive WebForm" <${process.env.SMTP_USER}>`,
+            from: `"Orlando's WebForm" <${process.env.SMTP_USER}>`,
             to: process.env.RECEIVER_EMAIL,
             subject: "Nuovo messaggio dal form",
             html: `
         <h2>Nuovo messaggio da:</h2>
-        <p><b>Nome:</b> ${nome} ${cognome}</p>
+        <p><b>Nome:</b> ${name} ${lastname}</p>
         <p><b>Email:</b> ${email}</p>
         <p><b>Telefono:</b> ${phone}</p>
         <p><b>Messaggio:</b><br/>${message}</p>

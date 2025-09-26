@@ -20,8 +20,6 @@ export default function ProjectCard(
     { image, title, description, tags, githubLink, demoLink, wip }: ProjectCardType
 ) {
 
-    console.log(githubLink, demoLink);
-
     return (
         <Card className="flex flex-col justify-between  shadow-lg ">
             <CardHeader className="flex flex-col gap-4 mx-auto w-full items-center justify-center">

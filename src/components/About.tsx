@@ -18,7 +18,7 @@ export default function About() {
                         alt="Profile Image"
                         width={500}
                         height={500}
-                        className='rounded-lg mb-16'
+                        className='rounded-lg mb-16 p-8'
                     />
                 </div>
                 <div className='md:w-[60%] w-full flex flex-col justify-center items-center'>
