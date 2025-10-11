@@ -1,5 +1,5 @@
 import { AboutCardType, experienceType, timelineType } from "@/types";
-import { FaCode, FaUserGraduate, FaLaptopCode } from "react-icons/fa6";
+import { FaCode, FaUserGraduate } from "react-icons/fa6";
 import { HeroType } from "@/types";
 import {
     SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiHtml5, SiCss3,
@@ -16,7 +16,7 @@ import { ProjectCardType } from "@/types";
 import Image from "next/image";
 import SkillPill from "@/components/SkillPill";
 import { JSX } from "react";
-import { TbScubaDiving } from "react-icons/tb";
+import { TbBrandReactNative, TbScubaDiving } from "react-icons/tb";
 
 
 
@@ -25,7 +25,7 @@ export const cards: AboutCardType[] = [
         icon: <FaCode className='h-8 w-8' />,
         title: "Languages and Frameworks",
         description: "Experience with HTML, CSS, Javascript, Typescript, TailwindCSS, React, Next.js",
-        tags: ["HTML", "CSS", "Typescript", "TailwindCSS", "React", "NextJS"]
+        tags: ["HTML", "CSS", "Typescript", "TailwindCSS", "React", "NextJS", "ReactNative"]
     },
     {
         icon: <FaUserGraduate className='h-8 w-8' />,
@@ -199,6 +199,7 @@ export const iconMap: Record<string, JSX.Element> = {
     npm: <SiNpm />,
     markdown: <SiMarkdown />,
     vscodeinsiders: <VscVscodeInsiders />,
+    reactnative: <SiReact />
 };
 
 export function getIcon(tag: string) {

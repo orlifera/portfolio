@@ -23,7 +23,7 @@ export default function About() {
                 </div>
                 <div className='md:w-[60%] w-full flex flex-col justify-center items-center'>
                     <p className='text-lg w-full max-w-2xl mx-auto font-light leading-relaxed p-8'>
-                        I am a Frontend Developer based in Padua. I have a BsC in Computer Science, with a a couple of years of experience in web development as a self-taught developer, building various WebApps, one of which was my BsC Thesys project. I am passionate about creating beautiful and functional websites and applications that provide an excellent user experience. I am always looking for new challenges and opportunities to learn and grow as a developer. I am also an avid andrenaline junkie, always eager to push my limits both above and underwater, without compromising safety.
+                        I am a Frontend Developer based in Padua. I have a BsC in Computer Science, with a a couple of years of experience in web development as a self-taught developer, building various WebApps, one of which was my BsC Thesys project. I am passionate about creating beautiful and functional websites and applications that provide an excellent user experience. I am always looking for new challenges and opportunities to learn and grow as a developer, which is why I&apos;m currently learning React Native. I am also an avid andrenaline junkie, always eager to push my limits both above and underwater, without compromising safety.
                     </p>
                     <div className="w-full flex flex-col md:grid md:grid-cols-2 xl:grid-cols-3 gap-6 px-8 items-stretch">
                         {cards.map((card, index) => (
