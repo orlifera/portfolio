@@ -209,7 +209,15 @@ export function getIcon(tag: string) {
 
 export const experienceData: experienceType[] = [
     {
-        year: "2025",
+        year: "Nov, 2025 - Curr.",
+        position: "FrontEnd Developer",
+        company: "Parkito.app",
+        description: "I joined Parkito.app as a FrontEnd Developer, where I worked on the development of the company's website and its Mobile App system. I was responsible for the implementation of the website's user interface and the integration of the user interface and user experience with the company's app.",
+        image: "/parkito.png",
+        tags: ["Programming", "Typescript", "React", "NextJS", "TailwindCSS", "ShadcnUI", "Firebase", "Netlify", "API", "React Native"]
+    },
+    {
+        year: "Jul, 2025",
         position: "Bachelor's Degree in Computer Science",
         company: "University of Padua",
         description: "Completed a Bachelor's degree in Computer Science with a thesis on Web Development, gaining knowledge in programming, algorithms, data structures, and more. Developed skills in problem-solving, critical thinking, and teamwork.",
@@ -217,26 +225,26 @@ export const experienceData: experienceType[] = [
         tags: ["Programming", "Algorithms", "Data Structures", "Problem-Solving", "Critical Thinking", "Teamwork"]
     },
     {
-        year: "2022",
+        year: "Apr, 2022 - Curr.",
         position: "Founder",
         company: "ML Tech",
         description: "Decided to take a leap and start my own business, specializing in custom-built PCs and accessories. Gained experience in entrepreneurship, marketing, and customer service.",
         image: "/mllogo.png",
         tags: ["Entrepreneurship", "Marketing", "Customer Service", "Leadership", "Business Development"]
     }, {
-        year: "2019",
+        year: "Jul, 2021",
+        position: "High School Diploma",
+        company: "Liceo Scientifico ISIS Follonica",
+        description: "Completed a high school diploma in scientific studies, gaining knowledge in mathematics, physics, chemistry, and more. Developed skills in analytical thinking, research, and communication.",
+        tags: ["Mathematics", "Physics", "Chemistry", "Analytical Thinking", "Research", "Communication"]
+    }, {
+        year: "Jun, 2019 - Curr.",
         position: "Divemaster and Deep scuba guide",
         company: "Feeldive Diving Center",
         description: "Growing up on the sea, I developed a passion for diving and underwater exploration. In 2019, I became a Divemaster and Deep scuba guide at Feeldive Diving Center, where I assist instructors in training and guiding certified divers on underwater excursions. This role has allowed me to combine my love for the ocean with my skills in leadership and communication, in addition to saftey and responsability.",
         image: "/uw.PNG",
         tags: ["Customer Service", "Communication", "Safety Procedures"]
-    }, {
-        year: "2021",
-        position: "High School Diploma",
-        company: "Liceo Scientifico ISIS Follonica",
-        description: "Completed a high school diploma in scientific studies, gaining knowledge in mathematics, physics, chemistry, and more. Developed skills in analytical thinking, research, and communication.",
-        tags: ["Mathematics", "Physics", "Chemistry", "Analytical Thinking", "Research", "Communication"]
-    }
+    },
 ]
 
 export const timelineData: timelineType[] = experienceData.map((exp) => ({
