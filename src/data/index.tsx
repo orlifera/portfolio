@@ -49,7 +49,7 @@ export const obj: HeroType = {
     alt: "Profile Image",
     button1: {
         text: "See My Work",
-        link: "/projects"
+        link: "#projects"
     },
     button2: {
         text: "My CV",
