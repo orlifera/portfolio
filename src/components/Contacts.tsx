@@ -78,7 +78,7 @@ export default function Contacts() {
                             href="tel:+393927958165"
                             className="hover:underline text-base sm:text-lg text-primary-foreground flex items-center gap-2"
                         >
-                            <Phone className="shrink-0" /> +39 349 788 3125
+                            <Phone className="shrink-0" /> +39 392 795 8165
                         </Link>
                     </li>
                     <li>
