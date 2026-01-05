@@ -236,7 +236,7 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <p className="text-yellow-400 font-bold text-lg"><span className="dark:text-gray-400 text-white">&lt;</span>OVMF <span className="text-amber-600">id=</span><span className="text-green-600">&quot;cool&quot;</span> <span className="dark:text-gray-400 text-white"> /&gt;</span></p>
+      <p className="text-yellow-400 font-bold text-lg"><span className="dark:text-gray-400 text-white">&lt;</span>OVMF <span className="text-amber-600">id=</span><span className="text-green-600">&quot;dev&quot;</span> <span className="dark:text-gray-400 text-white"> /&gt;</span></p>
     </Link>
   );
 };
