@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /no
+Disallow: /api/
+
+Sitemap: https://ovmf.netlify.app/sitemap.xml
