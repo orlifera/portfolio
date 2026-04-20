@@ -80,7 +80,7 @@ export default function Stepper({
       {...rest}
     >
       <div
-        className={`bg-card mx-auto w-full max-w-5xl rounded-lg shadow-xl ${stepCircleContainerClassName}`}
+        className={`bg-card mx-auto w-full md:max-w-5xl rounded-lg shadow-xl ${stepCircleContainerClassName}`}
         style={{ border: '1px solid rgba(255,255,255,0.08)' }}
       >
         <div className={`${stepContainerClassName} flex w-full items-center p-8`}>

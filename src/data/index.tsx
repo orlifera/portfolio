@@ -217,7 +217,7 @@ export const offers: OfferCardType[] = [
       "Contact form",
     ],
     spotlightColor: "rgba(0, 229, 255, 0.2)",
-    price: "starting from €350",
+    price: "From €350",
   },
   {
     title: "Website",
@@ -231,7 +231,7 @@ export const offers: OfferCardType[] = [
       "Multilingual support",
     ],
     spotlightColor: "rgba(196, 168, 130, 0.2)",
-    price: "Starting from €500"
+    price: "From €500"
   },
   {
     title: "Full-Stack Website",
@@ -245,7 +245,7 @@ export const offers: OfferCardType[] = [
       "Custom API integrations",
     ],
     spotlightColor: "rgba(244, 114, 182, 0.2)",
-    price: "Starting from €1500"
+    price: "From €1500"
   },
 ];
 
@@ -262,7 +262,7 @@ export const mobileOffers: OfferCardType[] = [
       "App Store / Play Store submission",
     ],
     spotlightColor: "rgba(0, 229, 255, 0.2)",
-    price: "Starting from €500"
+    price: "From €500"
   },
   {
     title: "Basic App",
@@ -276,7 +276,7 @@ export const mobileOffers: OfferCardType[] = [
       "Priority support",
     ],
     spotlightColor: "rgba(196, 168, 130, 0.2)",
-    price: "Starting from €1200"
+    price: "From €1200"
   },
   {
     title: "Full-Stack App",

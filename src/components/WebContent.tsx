@@ -27,7 +27,7 @@ export default function WebContent() {
               ))}
             </ul>
           </CardContent>
-          <CardFooter className="mt-4 p-0 flex flex-row justify-between w-full">
+          <CardFooter className="mt-4 p-0 px-0 flex flex-row justify-between w-full">
             <Button variant="default" onClick={() => { window.location.href = "#contatti" }}>
               Let&apos;s chat
             </Button>

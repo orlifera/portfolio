@@ -27,7 +27,7 @@ export default function MobileContent() {
               ))}
             </ul>
           </CardContent>
-          <CardFooter className="mt-4 p-0 flex flex-row justify-between w-full">
+          <CardFooter className="mt-4 p-0 flex flex-row justify-between w-full gap-2">
             <Button variant="default" onClick={() => { window.location.href = "#contatti" }}>
               Let&apos;s chat
             </Button>

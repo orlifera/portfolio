@@ -92,7 +92,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
-        width: visible ? "70%" : "100%",
+        width: visible ? "70%" : "90%",
         y: visible ? 20 : 0,
       }}
       transition={{
@@ -104,7 +104,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative  z-[60] mx-auto hidden w-full max-w-[85%] flex-row items-center justify-between self-start rounded-lg bg-muted-foreground/50 px-4 py-2 lg:flex",
+        "relative  z-[60] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-lg bg-muted-foreground/50 px-4 py-2 lg:flex",
         visible && "bg-muted-foreground/60",
         className,
       )}
@@ -154,7 +154,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
-        width: visible ? "40%" : "80%",
+        width: visible ? "90%" : "100%",
         paddingRight: visible ? "0px" : "0px",
         paddingLeft: visible ? "0px" : "0px",
         borderRadius: visible ? "0px" : "0px",
