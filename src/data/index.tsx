@@ -123,7 +123,7 @@ export const projects: ProjectCardType[] = [
     title: "Playground",
     description: "A web app I created to experiment with different things, like TicTacToe, a Kanban Board and a spotify widget.",
     tags: ["React", "JavaScript", "CSS", "Netlify", "API", "Vite"],
-    image: ["/playground1-1.png", "/playground1-2.png", "/playground1-3.png", "/playground1-4.png"],
+    image: ["/playground1-1.webp", "/playground1-2.webp", "/playground1-3.webp", "/playground1-4.webp"],
     githubLink: "https://github.com/orlifera/TTT-Kanban",
     demoLink: "https://orli-tictactoe-kanban.netlify.app/",
     wip: false,
@@ -132,7 +132,7 @@ export const projects: ProjectCardType[] = [
     title: "Thinky",
     description: "My BsC Thesis project. An interactive WebApp made for UniPD's OpenDay activities. It's built to be used strictly under guidance of a professor, and its purpose is to show students that computer science is not so hard, through a series of interactive exercises about syncronization problems.",
     tags: ["React", "TypeScript", "TailwindCSS", "Firebase", "NextJS", "Netlify", "ShadcnUI"],
-    image: ["/thinky1.png", "/thinky2.png", "/thinky3.png", "/thinky4.png", "/thinky5.png", "/thinky6.png", "/thinky7.png"],
+    image: ["/thinky1.webp", "/thinky2.webp", "/thinky3.webp", "/thinky4.webp", "/thinky5.webp", "/thinky6.webp", "/thinky7.webp"],
     githubLink: "https://github.com/orlifera/Thinky",
     demoLink: "https://prodotto.netlify.app/",
     wip: false,
@@ -149,7 +149,7 @@ export const projects: ProjectCardType[] = [
     title: "Feeldive diving center",
     description: "Modern website built for the diving center I work at. It features a e-commerce system to buy courses, and all other info about the center",
     tags: ["NextJS", "TailwindCSS", "ShadcnUI", "Stripe", "TypeScript"],
-    image: ["/feeldive.png", "/feeldive2.png"],
+    image: ["/feeldive.webp", "/feeldive2.webp"],
     githubLink: "https://github.com/orlifera/feeldive",
     demoLink: "https://feeldive.netlify.app",
     wip: true,
@@ -157,7 +157,7 @@ export const projects: ProjectCardType[] = [
     title: "Quote Generator",
     description: "A simple PC Quote generator app that I personally use to created quotes for my clients.",
     tags: ["React", "Typescript", "TailwindCSS", "Netlify"],
-    image: ["/quotegen1.png", "/quotegen2.png"],
+    image: ["/quotegen1.webp", "/quotegen2.webp"],
     githubLink: "https://github.com/orlifera/quotegen",
     demoLink: "https://quotegenml.netlify.app/",
     wip: true,
@@ -166,7 +166,7 @@ export const projects: ProjectCardType[] = [
     title: "GitHub Profile",
     description: "Visit my GitHub profile to see more projects and code samples.",
     tags: ["GitHub", "Projects", "Code"],
-    image: ["/github.png"],
+    image: ["/github.webp"],
     githubLink: "https://github.com/orlifera",
     wip: false,
   }
@@ -213,7 +213,7 @@ export const experienceData: experienceType[] = [
     position: "FrontEnd Developer",
     company: "Parkito.app",
     description: "I joined Parkito.app as a FrontEnd Developer, where I worked on the development of the company's website and its Mobile App system. I was responsible for the implementation of the website's user interface and the integration of the user interface and user experience with the company's app.",
-    image: "/parkito.png",
+    image: "/parkito.webp",
     tags: ["Programming", "Typescript", "React", "NextJS", "TailwindCSS", "ShadcnUI", "Firebase", "Netlify", "API", "React Native"]
   },
   {
@@ -221,7 +221,7 @@ export const experienceData: experienceType[] = [
     position: "Bachelor's Degree in Computer Science",
     company: "University of Padua",
     description: "Completed a Bachelor's degree in Computer Science with a thesis on Web Development, gaining knowledge in programming, algorithms, data structures, and more. Developed skills in problem-solving, critical thinking, and teamwork.",
-    image: "/IMG_7993.png",
+    image: "/IMG_7993.webp",
     tags: ["Programming", "Algorithms", "Data Structures", "Problem-Solving", "Critical Thinking", "Teamwork"]
   },
   {
@@ -229,7 +229,7 @@ export const experienceData: experienceType[] = [
     position: "Founder",
     company: "ML Tech",
     description: "Decided to take a leap and start my own business, specializing in custom-built PCs and accessories. Gained experience in entrepreneurship, marketing, and customer service.",
-    image: "/mllogo.png",
+    image: "/mllogo.webp",
     tags: ["Entrepreneurship", "Marketing", "Customer Service", "Leadership", "Business Development"]
   }, {
     year: "Jul, 2021",

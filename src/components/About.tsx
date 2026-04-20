@@ -14,7 +14,7 @@ export default function About() {
             <div className='flex md:flex-row flex-col flex-1 w-full'>
                 <div className='md:w-[40%] w-full flex flex-col justify-center items-center'>
                     <Image
-                        src="/IMG_7993.png"
+                        src="/IMG_7993.webp"
                         alt="Profile Image"
                         width={500}
                         height={500}
