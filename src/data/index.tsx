@@ -1,4 +1,4 @@
-import { AboutCardType, experienceType, timelineType } from "@/types";
+import { AboutCardType, experienceType, OfferCardType, timelineType } from "@/types";
 import { FaCode, FaUserGraduate } from "react-icons/fa6";
 import { HeroType } from "@/types";
 import {
@@ -9,7 +9,9 @@ import {
   SiNetlify,
   SiShadcnui,
   SiFirebase,
-  SiStripe
+  SiStripe,
+  SiExpo,
+  SiSupabase
 } from "react-icons/si";
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { ProjectCardType } from "@/types";
@@ -63,50 +65,60 @@ export const obj: HeroType = {
 
 export const techLogos = [
   {
-    node: <SiReact />, title: "React", href: "https:/ / react.dev"
+    node: <SiReact />, title: "React", href: "https://react.dev"
   },
   {
-    node: <SiNextdotjs />, title: "Next.js", href: "https:/ / nextjs.org"
+    node: <SiExpo />, title: "Expo", href: "https://expo.dev"
   },
   {
-    node: <SiTypescript />, title: "TypeScript", href: "https:/ / www.typescriptlang.org"
+    node: <TbBrandReactNative />, title: "React Native", href: "https://reactnative.dev"
   },
   {
-    node: <SiTailwindcss />, title: "Tailwind CSS", href: "https:/ / tailwindcss.com"
+    node: <SiSupabase />, title: "Supabase", href: "https://supabase.com"
+  },
+  {
+    node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org"
+  },
+  {
+    node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org"
+  },
+  {
+    node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com"
   },
   { node: <SiHtml5 />, title: "HTML", href: "" },
   {
-    node: <SiCss />, title: "CSS", href: "https:/ / developer.mozilla.org / en - US / docs / Web / CSS"
+    node: <SiCss />, title: "CSS", href: "https://developer.mozilla.org/en-US/docs/Web/CSS"
   },
   {
-    node: <SiC />, title: "C", href: "https:/ / en.wikipedia.org / wiki / C_(programming_language)"
+    node: <SiC />, title: "C", href: "https://en.wikipedia.org/wiki/C_(programming_language)"
   },
   { node: <SiGnubash />, title: "Bash", href: "" },
   {
-    node: <SiPython />, title: "Python", href: "https:/ / www.python.org"
+    node: <SiPython />, title: "Python", href: "https://www.python.org"
   },
   {
-    node: <SiGit />, title: "Git", href: "https:/ / git - scm.com"
+    node: <SiGit />, title: "Git", href: "https://git-scm.com"
   },
   {
-    node: <SiGithub />, title: "GitHub", href: "https:/ / github.com"
+    node: <SiGithub />, title: "GitHub", href: "https://github.com"
   },
   {
-    node: <SiLatex />, title: "LaTeX", href: "https:/ / latex.org"
+    node: <SiLatex />, title: "LaTeX", href: "https://latex.org"
   },
   {
-    node: <SiTypst />, title: "Typst", href: "https:/ / typst.app"
+    node: <SiTypst />, title: "Typst", href: "https://typst.app"
   },
   {
-    node: <SiLinux />, title: "Linux", href: "https:/ / linux.org"
+    node: <SiLinux />, title: "Linux", href: "https://linux.org"
   },
   {
-    node: <SiNpm />, title: "NPM", href: "https:/ / www.npmjs.com"
+    node: <SiNpm />, title: "NPM", href: "https://www.npmjs.com"
   },
   {
-    node: <SiMarkdown />, title: "Markdown", href: "https:/ / www.markdownguide.org"
+    node: <SiMarkdown />, title: "Markdown", href: "https://www.markdownguide.org"
   },
-  { node: <VscVscodeInsiders />, title: "VSCode", href: "https:/ / code.visualstudio.com" },
+  { node: <VscVscodeInsiders />, title: "VSCode", href: "https://code.visualstudio.com" },
+
 ]
 
 
@@ -137,14 +149,6 @@ export const projects: ProjectCardType[] = [
     demoLink: "https://prodotto.netlify.app/",
     wip: false,
   },
-  // {
-  //     title: "Playground 2.0",
-  //     description: "Another website I made to experiment and develop my skills. It features a notes section, a dynamic wishlist with an addForm and a watchlist that uses localStorage to save your movies.",
-  //     tags: ["NextJS", "TypeScript", "TailwindCSS", "Netlify", "API"],
-  //     image: ["/playground2-1.png", "/playground2-2.png", "/playground2-3.png", "/playground2-4.png"],
-  //     githubLink: "https://github.com/orlifera/project",
-  //     wip: false,
-  // },
   {
     title: "Feeldive diving center",
     description: "Modern website built for the diving center I work at. It features a e-commerce system to buy courses, and all other info about the center",
@@ -163,6 +167,33 @@ export const projects: ProjectCardType[] = [
     wip: true,
   },
   {
+    title: "Parkito Website",
+    description: "Main website for the startup I'm currently working at. Parkito it's a rising reality in the short-term rental industry. We are like AirBnB but for private parkings.",
+    tags: ["NextJS", "Typescript", "TailwindCSS", "Netlify", "ShadcnUI"],
+    image: ["/parkito-web.webp", "/parkito-web2.webp"],
+    githubLink: "/no",
+    demoLink: "https://parkito.app/",
+    wip: false,
+  },
+  {
+    title: "Parkito Host Dashboard",
+    description: "Host Dashboard for the startup I'm currently working at. This CRUD web application is only accessible for Hosts, users who rent their parking through our platform.",
+    tags: ["NextJS", "Typescript", "TailwindCSS", "Netlify", "ShadcnUI", "Supabase", "Auth", "CRUD"],
+    image: ["/parkito-dashboard.webp", "/parkito-dashboard2.webp"],
+    githubLink: "/no",
+    demoLink: "/no",
+    wip: false,
+  },
+  {
+    title: "Parkito App",
+    description: "Parkito's mobile app. This is the core of the Startup, the main product and where the magic happens.",
+    tags: ["React Native", "Uniwind", "Typescript", "TailwindCss", "Expo", "Supabase", "CRUD"],
+    image: ["/parkito-app.webp", "/parkito-app2.webp"],
+    githubLink: "/no",
+    demoLink: "https://parkito.onelink.me/86z0/bjekqlbd",
+    wip: false,
+  },
+  {
     title: "GitHub Profile",
     description: "Visit my GitHub profile to see more projects and code samples.",
     tags: ["GitHub", "Projects", "Code"],
@@ -172,6 +203,91 @@ export const projects: ProjectCardType[] = [
   }
 ];
 
+
+export const offers: OfferCardType[] = [
+  {
+    title: "Basic Website",
+    description: "A complete web presence, in just three pages.",
+    features: [
+      "Minimal & modern design with animations",
+      "Full responsiveness",
+      "Up to 3 pages",
+      "Performance optimization",
+      "Accessibility compliance WCAG AAA",
+      "Contact form",
+    ],
+    spotlightColor: "rgba(0, 229, 255, 0.2)",
+    price: "starting from €350",
+  },
+  {
+    title: "Website",
+    description: "Everything in the Landing Page, scaled up to a full multi-page experience.",
+    features: [
+      "Everything included in Landing Page",
+      "Up to 10 pages",
+      "PostHog analytics integration",
+      "Custom domain setup",
+      "SEO optimization across all pages",
+      "Multilingual support",
+    ],
+    spotlightColor: "rgba(196, 168, 130, 0.2)",
+    price: "Starting from €500"
+  },
+  {
+    title: "Full-Stack Website",
+    description: "The complete package — unlimited pages, database and content management built in.",
+    features: [
+      "Everything included in Website",
+      "Unlimited pages",
+      "Database connection & setup",
+      "Content management system",
+      "User authentication",
+      "Custom API integrations",
+    ],
+    spotlightColor: "rgba(244, 114, 182, 0.2)",
+    price: "Starting from €1500"
+  },
+];
+
+export const mobileOffers: OfferCardType[] = [
+  {
+    title: "Starter App",
+    description: "A focused mobile app with the core screens your idea needs.",
+    features: [
+      "Up to 5 screens",
+      "iOS & Android (React Native)",
+      "Minimal & modern UI",
+      "Full responsiveness across devices",
+      "Basic navigation and routing",
+      "App Store / Play Store submission",
+    ],
+    spotlightColor: "rgba(0, 229, 255, 0.2)",
+    price: "Starting from €500"
+  },
+  {
+    title: "Basic App",
+    description: "A complete app experience with backend and real-time features.",
+    features: [
+      "Everything in Starter App",
+      "Unlimited screens",
+      "Push notifications",
+      "Authentication (email, social login)",
+      "Supabase / Firebase backend integration",
+      "Priority support",
+    ],
+    spotlightColor: "rgba(196, 168, 130, 0.2)",
+    price: "Starting from €1200"
+  },
+  {
+    title: "Full-Stack App",
+    description: "End-to-end product — app, backend, dashboard and content management.",
+    features: [
+      "Everything in Full App",
+      "Custom requests"
+    ],
+    spotlightColor: "rgba(244, 114, 182, 0.2)",
+  },
+];
 
 export const iconMap: Record<string, JSX.Element> = {
   html: <SiHtml5 />,
@@ -199,7 +315,11 @@ export const iconMap: Record<string, JSX.Element> = {
   npm: <SiNpm />,
   markdown: <SiMarkdown />,
   vscodeinsiders: <VscVscodeInsiders />,
-  reactnative: <SiReact />
+  reactnative: <TbBrandReactNative />,
+  expo: <SiExpo />,
+  supabase: <SiSupabase />,
+  uniwind: <SiTailwindcss />,
+
 };
 
 export function getIcon(tag: string) {
@@ -210,7 +330,7 @@ export function getIcon(tag: string) {
 export const experienceData: experienceType[] = [
   {
     year: "Nov, 2025 - Curr.",
-    position: "FrontEnd Developer",
+    position: "Fullstack Developer",
     company: "Parkito.app",
     description: "I joined Parkito.app as a FrontEnd Developer, where I worked on the development of the company's website and its Mobile App system. I was responsible for the implementation of the website's user interface and the integration of the user interface and user experience with the company's app.",
     image: "/parkito.webp",

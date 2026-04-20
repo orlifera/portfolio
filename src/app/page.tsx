@@ -2,8 +2,9 @@ import About from "@/components/About";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Contacts from "@/components/Contacts";
-import { obj } from "@/data";
+import Services from "@/components/Services";
 import Experience from "@/components/Experience";
+import { obj } from "@/data";
 
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <div className="h-20" />
       <About />
       <Projects />
+      <Services />
       <div className="h-20" />
       <Experience />
       <Contacts />

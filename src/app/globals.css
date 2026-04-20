@@ -129,6 +129,9 @@
   #experience {
     scroll-margin-top: 3em;
   }
+  #services {
+    scroll-margin-top: 6em;
+  }
 
   body {
     @apply bg-background text-foreground;

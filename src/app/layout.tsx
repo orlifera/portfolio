@@ -116,7 +116,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistMono.className} w-full antialiased bg-linear-to-b from-background via-muted-foreground to-foreground text-foreground flex flex-col`}
+        className={`${geistMono.className} w-full overflow-x-hidden antialiased bg-linear-to-b from-background via-muted-foreground to-foreground text-foreground flex flex-col px-4`}
       >
         <ThemeProvider
           attribute="class"
