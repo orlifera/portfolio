@@ -46,7 +46,7 @@ export default function OGImage() {
             color: "#71717a",
           }}
         >
-          ovmf.netlify.app
+          orlandoferazzani.dev
         </div>
       </div>
     ),

@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://ovmf.netlify.app";
+const BASE_URL = "https://orlandoferazzani.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

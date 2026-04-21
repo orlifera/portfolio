@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://ovmf.netlify.app",
+      url: "https://orlandoferazzani.dev",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
