@@ -1,8 +1,10 @@
-import Image from 'next/image';
+
 import AboutCard from '@/components/AboutCard';
 import LogoLoop from '@/components/LogoLoop';
 import { cards } from '@/data/';
 import { techLogos } from '@/data/';
+// import ProfileImage from './ProfileImage';
+import Image from 'next/image'
 
 export default function About() {
   return (
@@ -20,12 +22,13 @@ export default function About() {
             height={500}
             className='rounded-lg mb-16 p-8'
           />
+          {/* <ProfileImage /> */}
         </div>
         <div className='md:w-[60%] w-full flex flex-col justify-center items-center'>
           <p className='text-lg w-full max-w-2xl mx-auto font-light leading-relaxed p-8'>
             I am a Frontend Developer based in Padua. I have a BsC in Computer Science, with a a couple of years of experience in web development as a self-taught developer, building various WebApps, one of which was my BsC Thesys project. I am passionate about creating beautiful and functional websites and applications that provide an excellent user experience. I am always looking for new challenges and opportunities to learn and grow as a developer, which is why I&apos;m currently learning React Native. I am also an avid andrenaline junkie, always eager to push my limits both above and underwater, without compromising safety.
           </p>
-          <div className="w-full flex flex-col md:grid md:grid-cols-2 xl:grid-cols-3 gap-2 px-8 items-stretch">
+          <div className="w-full flex flex-col md:grid md:grid-cols-2 xl:grid-cols-3 gap-2 items-stretch overflow-hidden">
             {cards.map((card, index) => (
               <AboutCard
                 key={index}
@@ -50,8 +53,6 @@ export default function About() {
             />
           </div>
         </div>
-
-
       </div >
     </div>
   )

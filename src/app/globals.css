@@ -133,6 +133,10 @@
     scroll-margin-top: 6em;
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
