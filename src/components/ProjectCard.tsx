@@ -1,107 +1,116 @@
 "use client"
 
-import { ProjectCardType } from '@/types'
-import {
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import SkillPill from '@/components/SkillPill'
-import Link from 'next/link'
-import { Carousel, CarouselContent, CarouselNext, CarouselItem, CarouselPrevious } from '@/components/ui/carousel'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { SiGithub } from 'react-icons/si'
-import { LuConstruction } from 'react-icons/lu'
-import { LinkIcon } from 'lucide-react'
-import BorderGlow from "@/components/BorderGlow";
-import { useTheme } from 'next-themes'
-import { useState, useEffect } from 'react'
+import { ArrowUpRight, Construction } from 'lucide-react'
+import { ProjectCardType } from '@/types'
+import SkillPill from '@/components/SkillPill'
+import TorchCard from '@/components/TorchCard'
+import { Carousel, CarouselContent, CarouselNext, CarouselItem, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel'
 
+const isExternal = (href: string) => href.startsWith('http')
+
+const linkClass =
+  'group/link inline-flex h-10 items-center gap-2 rounded-md border px-4 text-sm font-semibold transition-colors duration-200 hover:border-foreground/50 hover:bg-accent'
 
 export default function ProjectCard(
   { image, title, description, tags, githubLink, demoLink, wip }: ProjectCardType
 ) {
+  const [api, setApi] = useState<CarouselApi>()
+  const [slide, setSlide] = useState(0)
 
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => { setMounted(true) }, [])
-
-  const bgCard = mounted && resolvedTheme === 'dark' ? '#1c1917' : '#ffffff';
-
+  useEffect(() => {
+    if (!api) return
+    const onSelect = () => setSlide(api.selectedScrollSnap())
+    api.on('select', onSelect)
+    return () => { api.off('select', onSelect) }
+  }, [api])
 
   return (
-    <BorderGlow
-      edgeSensitivity={30}
-      glowColor="40 80 80"
-      backgroundColor={bgCard}
-      borderRadius={10}
-      glowRadius={40}
-      glowIntensity={1}
-      coneSpread={25}
-      animated
-      colors={['#c084fc', '#f472b6', '#38bdf8']}
-      className="flex flex-col justify-between p-4 shadow-lg rounded-lg"
-    >
-
-      <CardHeader className="flex flex-col gap-4 mx-auto w-full items-center justify-center">
-        <CardTitle className="flex justify-center">{title}</CardTitle>
-        <Carousel className="relative w-full" opts={{ loop: true }}>
-          <CarouselContent className="flex mx-auto">
-            {image.map((img, idx) => (
-              <CarouselItem key={idx} className="w-full flex shrink-0 px-2">
-                <Image
-                  src={img}
-                  width={800}
-                  height={400}
-                  alt={`${title} screenshot ${idx + 1}`}
-                  className="rounded-lg w-full my-2 justify-center items-center mx-auto max-h-[600px] object-contain"
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          {/* Controls - now positioned relative to Carousel */}
-          {image.length > 1 &&
-            <>
-              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
-            </>
-          }
-        </Carousel>
-
-
-
-      </CardHeader >
-      <CardContent>
-        <CardDescription className="text-center text-sm">{description}</CardDescription>
-      </CardContent>
-      <CardFooter className="flex flex-col gap-2 justify-center">
-        <div className="flex flex-wrap gap-2 justify-center">
-          {tags.map((tag, index) => (
-            <Link href={`https://www.google.com/search?q=${tag}`} key={index} target="_blank" rel="noopener noreferrer">
-              <SkillPill title={tag} text='text-xs' />
-            </Link>
+    <TorchCard className="flex h-full flex-col">
+      <Carousel className="group/media relative" opts={{ loop: true }} setApi={setApi}>
+        <CarouselContent className="ml-0">
+          {image.map((img, idx) => (
+            <CarouselItem key={img} className="torch-media relative aspect-16/10 bg-abyss/50 pl-0">
+              <Image
+                src={img}
+                fill
+                sizes="(min-width: 1024px) 360px, (min-width: 640px) 46vw, 92vw"
+                alt={`${title} screenshot ${idx + 1}`}
+                className="object-contain"
+              />
+            </CarouselItem>
           ))}
-        </div>
-        <div className='flex flex-row gap-2 items-center'>
-          {githubLink &&
-            <Link href={githubLink} target="_blank" rel="noopener noreferrer">
-              <SiGithub className='h-6 w-6 hover:cursor-pointer' />
-            </Link>
-          }
-          {demoLink &&
-            <Link href={demoLink} target="_blank" rel="noopener noreferrer">
-              <LinkIcon className='text-sm underline hover:cursor-pointer ml-2' />
-            </Link>
-          }
+        </CarouselContent>
+
+        {image.length > 1 &&
+          <>
+            <CarouselPrevious className="left-3 rounded-md border-0 bg-abyss/80 text-foreground opacity-100 transition-opacity duration-300 hover:bg-abyss hover:text-foreground [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/media:opacity-100 [@media(hover:hover)]:group-focus-within/media:opacity-100" />
+            <CarouselNext className="right-3 rounded-md border-0 bg-abyss/80 text-foreground opacity-100 transition-opacity duration-300 hover:bg-abyss hover:text-foreground [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/media:opacity-100 [@media(hover:hover)]:group-focus-within/media:opacity-100" />
+            <p aria-hidden className="absolute bottom-3 right-3 rounded-sm bg-abyss/80 px-2 py-0.5 font-mono text-[0.6875rem] tabular-nums">
+              {slide + 1} / {image.length}
+            </p>
+          </>
+        }
+      </Carousel>
+
+      <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-xl font-bold leading-tight">{title}</h3>
           {wip &&
-            <LuConstruction className='h-6 w-6 text-yellow-500 inline-block ml-2' title='Work in Progress' />
+            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-signal/50 px-2 py-1 font-mono text-[0.6875rem] font-medium text-signal">
+              <Construction className="size-3.5" aria-hidden />
+              Work in progress
+            </span>
           }
         </div>
-      </CardFooter>
-    </BorderGlow>
+
+        <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+
+        <ul className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <li key={tag}>
+              <Link
+                href={`https://www.google.com/search?q=${encodeURIComponent(tag)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md"
+              >
+                <SkillPill title={tag} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {(githubLink || demoLink) &&
+          <div className="mt-auto flex flex-wrap gap-2 pt-2">
+            {githubLink &&
+              <Link
+                href={githubLink}
+                className={linkClass}
+                {...(isExternal(githubLink) && { target: '_blank', rel: 'noopener noreferrer' })}
+              >
+                <SiGithub className="size-4" aria-hidden />
+                Code
+                <span className="sr-only"> for {title}</span>
+              </Link>
+            }
+            {demoLink &&
+              <Link
+                href={demoLink}
+                className={linkClass}
+                {...(isExternal(demoLink) && { target: '_blank', rel: 'noopener noreferrer' })}
+              >
+                Live
+                <span className="sr-only"> version of {title}</span>
+                <ArrowUpRight className="size-4 transition-transform duration-300 ease-out-expo group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" aria-hidden />
+              </Link>
+            }
+          </div>
+        }
+      </div>
+    </TorchCard>
   )
 }

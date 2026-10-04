@@ -47,12 +47,9 @@ export type experienceType = {
   company: string;
   description: string;
   image?: string;
+  /** The image is a logo: show all of it instead of cropping to fill. */
+  logo?: boolean;
   tags: string[];
-};
-
-export type timelineType = {
-  title: string;
-  content: JSX.Element;
 };
 
 export type OfferCardType = {

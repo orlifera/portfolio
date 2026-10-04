@@ -1,5 +1,6 @@
 "use client";
 
+import { Dialog } from "radix-ui";
 import { Button } from "@/components/ui/button";
 import { Download, X } from "lucide-react";
 
@@ -8,76 +9,62 @@ interface CVDownloadModalProps {
     onClose: () => void;
 }
 
+const cvPaths = {
+    it: "/CV-Ferazzani.pdf",
+    en: "/CV_Eng.pdf",
+};
+
 export default function CVDownloadModal({ isOpen, onClose }: CVDownloadModalProps) {
-    if (!isOpen) return null;
-
-    const handleDownload = (language: 'it' | 'en') => {
-        const cvPaths = {
-            it: "/CV-Ferazzani.pdf",
-            en: "/CV_ENG.pdf"
-        };
-
+    const handleDownload = (language: keyof typeof cvPaths) => {
         window.open(cvPaths[language], "_blank");
         onClose();
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-            <div className="bg-background border border-border rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-xl font-semibold text-foreground">
-                        CV Language
-                    </h2>
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={onClose}
-                        className="h-8 w-8"
-                    >
-                        <X className="h-4 w-4" />
-                    </Button>
-                </div>
+        <Dialog.Root open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
+            <Dialog.Portal>
+                <Dialog.Overlay className="fixed inset-0 z-modal bg-[oklch(0.1_0.03_267/0.65)] duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
+                <Dialog.Content className="fixed left-1/2 top-1/2 z-modal w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border bg-popover p-6 text-popover-foreground shadow-2xl duration-300 ease-out-expo data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-bottom-4">
+                    <div className="flex items-center justify-between gap-4">
+                        <Dialog.Title className="text-xl font-bold">CV Language</Dialog.Title>
+                        <Dialog.Close asChild>
+                            <Button variant="ghost" size="icon" aria-label="Close">
+                                <X />
+                            </Button>
+                        </Dialog.Close>
+                    </div>
 
-                {/* Content */}
-                <p className="text-muted-foreground mb-6 text-center">
-                    Choose your preferred language to download my CV.
-                </p>
+                    <Dialog.Description className="mt-2 text-muted-foreground">
+                        Choose your preferred language to download my CV.
+                    </Dialog.Description>
 
-                {/* Buttons */}
-                <div className="flex flex-col gap-3">
-                    <Button
-                        onClick={() => handleDownload('it')}
-                        variant="default"
-                        className="w-full h-12 text-base gap-3"
-                    >
-                        <span className="text-2xl">🇮🇹</span>
-                        Curriculum Vitae - Italiano
-                        <Download className="h-4 w-4" />
-                    </Button>
+                    <div className="mt-6 flex flex-col gap-3">
+                        <Button onClick={() => handleDownload('it')} size="lg" className="w-full justify-between">
+                            <span className="flex items-center gap-3">
+                                <span className="text-2xl" aria-hidden>🇮🇹</span>
+                                Curriculum Vitae - Italiano
+                            </span>
+                            <Download />
+                        </Button>
 
-                    <Button
-                        onClick={() => handleDownload('en')}
-                        variant="outline"
-                        className="w-full h-12 text-base gap-3"
-                    >
-                        <span className="text-2xl">🇬🇧</span>
-                        Curriculum Vitae - English
-                        <Download className="h-4 w-4" />
-                    </Button>
-                </div>
+                        <Button onClick={() => handleDownload('en')} variant="outline" size="lg" className="w-full justify-between">
+                            <span className="flex items-center gap-3">
+                                <span className="text-2xl" aria-hidden>🇬🇧</span>
+                                Curriculum Vitae - English
+                            </span>
+                            <Download />
+                        </Button>
+                    </div>
 
-                {/* Footer */}
-                <div className="mt-6 text-center">
-                    <Button
-                        variant="ghost"
-                        onClick={onClose}
-                        className="text-muted-foreground hover:text-foreground"
-                    >
-                        Cancel
-                    </Button>
-                </div>
-            </div>
-        </div>
+                    <div className="mt-4 text-center">
+                        <Dialog.Close asChild>
+                            <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
+                                Cancel
+                            </Button>
+                        </Dialog.Close>
+                    </div>
+                </Dialog.Content>
+            </Dialog.Portal>
+        </Dialog.Root>
     );
 }

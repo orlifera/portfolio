@@ -6,21 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -37,107 +24,633 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-signal: var(--signal);
+  --color-signal-foreground: var(--signal-foreground);
+  --color-abyss: var(--abyss);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Lets a heading's width axis be transitioned (see the title reveal below). */
+@property --wdth-shift {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+/* Air: everything above the waterline. Light on a day dive. */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.25);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.147 0.004 49.25);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.147 0.004 49.25);
-  --primary: oklch(0.216 0.006 56.043);
-  --primary-foreground: oklch(0.985 0.001 106.423);
-  --secondary: oklch(0.97 0.001 106.424);
-  --secondary-foreground: oklch(0.216 0.006 56.043);
-  --muted: oklch(0.97 0.001 106.424);
-  --muted-foreground: oklch(0.553 0.013 58.071);
-  --accent: oklch(0.97 0.001 106.424);
-  --accent-foreground: oklch(0.216 0.006 56.043);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.923 0.003 48.717);
-  --input: oklch(0.923 0.003 48.717);
-  --ring: oklch(0.709 0.01 56.259);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0.001 106.423);
-  --sidebar-foreground: oklch(0.147 0.004 49.25);
-  --sidebar-primary: oklch(0.216 0.006 56.043);
-  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-accent: oklch(0.97 0.001 106.424);
-  --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
-  --sidebar-border: oklch(0.923 0.003 48.717);
-  --sidebar-ring: oklch(0.709 0.01 56.259);
+  --radius: 0.5rem;
+  --e-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --e-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Hi-vis yellow, the one accent. Reserved for primary actions and live state. */
+  --signal: oklch(0.88 0.155 97);
+  --signal-foreground: oklch(0.21 0.05 262);
+
+  --sky-top: oklch(0.975 0.012 236);
+  --sky-horizon: oklch(0.915 0.04 232);
+
+  --background: oklch(0.965 0.014 236);
+  --foreground: oklch(0.22 0.05 262);
+  --card: oklch(0.995 0.004 236);
+  --card-foreground: oklch(0.22 0.05 262);
+  --popover: oklch(0.995 0.004 236);
+  --popover-foreground: oklch(0.22 0.05 262);
+  --primary: oklch(0.25 0.07 262);
+  --primary-foreground: oklch(0.98 0.01 236);
+  --secondary: oklch(0.925 0.025 238);
+  --secondary-foreground: oklch(0.25 0.07 262);
+  --muted: oklch(0.935 0.02 238);
+  --muted-foreground: oklch(0.42 0.06 258);
+  --accent: oklch(0.925 0.025 238);
+  --accent-foreground: oklch(0.25 0.07 262);
+  --destructive: oklch(0.55 0.22 27);
+  --border: oklch(0.86 0.03 240);
+  --input: oklch(0.56 0.07 250);
+  --ring: oklch(0.47 0.14 252);
+
+  /* The water column, surface to seabed. Matched to the hero photo. */
+  --water-0: oklch(0.47 0.125 247);
+  --water-1: oklch(0.4 0.123 253);
+  --water-2: oklch(0.3 0.108 258);
+  --water-3: oklch(0.215 0.078 262);
+  --water-4: oklch(0.145 0.048 265);
+  --abyss: oklch(0.105 0.03 267);
 }
 
+/* Night dive. */
 .dark {
-  --background: oklch(0.147 0.004 49.25);
-  --foreground: oklch(0.985 0.001 106.423);
-  --card: oklch(0.216 0.006 56.043);
-  --card-foreground: oklch(0.985 0.001 106.423);
-  --popover: oklch(0.216 0.006 56.043);
-  --popover-foreground: oklch(0.985 0.001 106.423);
-  --primary: oklch(0.923 0.003 48.717);
-  --primary-foreground: oklch(0.216 0.006 56.043);
-  --secondary: oklch(0.268 0.007 34.298);
-  --secondary-foreground: oklch(0.985 0.001 106.423);
-  --muted: oklch(0.268 0.007 34.298);
-  --muted-foreground: oklch(0.709 0.01 56.259);
-  --accent: oklch(0.268 0.007 34.298);
-  --accent-foreground: oklch(0.985 0.001 106.423);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.553 0.013 58.071);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.216 0.006 56.043);
-  --sidebar-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-accent: oklch(0.268 0.007 34.298);
-  --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.553 0.013 58.071);
+  --sky-top: oklch(0.125 0.028 268);
+  --sky-horizon: oklch(0.19 0.05 260);
+
+  --background: oklch(0.14 0.03 266);
+  --foreground: oklch(0.965 0.012 238);
+  --card: oklch(0.19 0.04 264);
+  --card-foreground: oklch(0.965 0.012 238);
+  --popover: oklch(0.19 0.04 264);
+  --popover-foreground: oklch(0.965 0.012 238);
+  --primary: var(--signal);
+  --primary-foreground: var(--signal-foreground);
+  --secondary: oklch(1 0 0 / 10%);
+  --secondary-foreground: oklch(0.965 0.012 238);
+  --muted: oklch(1 0 0 / 8%);
+  --muted-foreground: oklch(0.8 0.035 245);
+  --accent: oklch(1 0 0 / 10%);
+  --accent-foreground: oklch(0.965 0.012 238);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 26%);
+  --ring: var(--signal);
+
+  --water-0: oklch(0.27 0.085 254);
+  --water-1: oklch(0.225 0.075 258);
+  --water-2: oklch(0.18 0.06 261);
+  --water-3: oklch(0.145 0.045 264);
+  --water-4: oklch(0.115 0.034 266);
+  --abyss: oklch(0.09 0.024 268);
 }
+
+/* Below the waterline the tokens flip to light ink on water, day or night. */
+.water {
+  --background: var(--water-3);
+  --foreground: oklch(0.975 0.012 236);
+  --card: oklch(0.15 0.05 264 / 55%);
+  --card-foreground: oklch(0.975 0.012 236);
+  --popover: oklch(0.19 0.06 262);
+  --popover-foreground: oklch(0.975 0.012 236);
+  --primary: var(--signal);
+  --primary-foreground: var(--signal-foreground);
+  --secondary: oklch(1 0 0 / 10%);
+  --secondary-foreground: oklch(0.975 0.012 236);
+  --muted: oklch(1 0 0 / 8%);
+  --muted-foreground: oklch(0.87 0.035 240);
+  --accent: oklch(1 0 0 / 12%);
+  --accent-foreground: oklch(0.975 0.012 236);
+  --destructive: oklch(0.72 0.18 22);
+  --border: oklch(1 0 0 / 16%);
+  --input: oklch(1 0 0 / 30%);
+  --ring: var(--signal);
+  color: var(--foreground);
+}
+
+/* Pressure: headings get narrower the deeper the section sits. */
+[data-depth="1"] { --wdth: 120; }
+[data-depth="2"] { --wdth: 108; }
+[data-depth="3"] { --wdth: 96; }
+[data-depth="4"] { --wdth: 84; }
+[data-depth="5"] { --wdth: 72; }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    scroll-behavior: smooth;
-  }
-
-  #about {
-    scroll-margin-top: 6em;
-  }
-
-  #projects {
-    scroll-margin-top: 6em;
-  }
-
-  #experience {
-    scroll-margin-top: 3em;
-  }
-  #services {
-    scroll-margin-top: 6em;
   }
 
   html {
-    overflow-x: hidden;
+    overflow-x: clip;
+    background: var(--background);
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: oklch(0.5 0.08 255) var(--abyss);
+    accent-color: var(--signal);
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  input,
+  textarea {
+    caret-color: var(--signal);
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--signal);
+    color: var(--signal-foreground);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* Stacking order, lowest to highest. */
+@utility z-gauge {
+  z-index: 30;
+}
+@utility z-nav {
+  z-index: 40;
+}
+@utility z-modal {
+  z-index: 50;
+}
+
+@utility display {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-variation-settings: "wdth" calc(var(--wdth, 112) + var(--wdth-shift, 0));
+  letter-spacing: -0.015em;
+  line-height: 0.98;
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ---------- Hero ---------- */
+
+.hero-sky {
+  background: linear-gradient(to bottom, var(--sky-top), var(--sky-horizon));
+}
+
+.hero-mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.06em;
+  margin-block: -0.06em;
+}
+
+.hero-line {
+  display: block;
+  white-space: nowrap;
+  animation: hero-rise 1s var(--e-expo) both;
+  animation-delay: calc(var(--i, 0) * 110ms + 120ms);
+}
+
+.hero-fade {
+  animation: hero-fade 0.8s var(--e-quart) both;
+  animation-delay: calc(var(--i, 0) * 110ms + 120ms);
+}
+
+/* Surfacing: the name decompresses from narrow to wide on load. */
+.hero-name {
+  animation: hero-inflate 1.5s var(--e-expo) 120ms backwards;
+}
+
+.nav-in {
+  animation: nav-in 0.9s var(--e-expo) both;
+}
+
+@keyframes hero-rise {
+  from {
+    transform: translateY(108%);
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+@keyframes hero-inflate {
+  from {
+    font-variation-settings: "wdth" 62;
+  }
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+}
+
+/* The scroll cue: a sounding line with a weight travelling down it. */
+.sounding-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 2.75rem;
+  background: oklch(1 0 0 / 28%);
+  overflow: hidden;
+}
+
+.sounding-line::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 40%;
+  background: var(--signal);
+  animation: sounding 2.2s var(--e-quart) infinite;
+}
+
+@keyframes sounding {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(250%);
+  }
+}
+
+/* ---------- Water ---------- */
+
+.water-column {
+  --diver-w: min(96vw, 58rem);
+  --diver-h: calc(var(--diver-w) / 1.152);
+  background-color: var(--water-3);
+  background-image: linear-gradient(
+    in oklch to bottom,
+    var(--water-0) 0,
+    var(--water-1) calc(var(--diver-h) * 0.55),
+    var(--water-2) calc(var(--diver-h) * 1.1),
+    var(--water-3) 46%,
+    var(--water-4) 78%,
+    var(--abyss) 100%
+  );
+}
+
+/* The surface seen from the side: a hairline, the light just under it, fine ripples. */
+.surface {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 7rem;
+  overflow: hidden;
+  background: linear-gradient(to bottom, oklch(1 0 0 / 14%), transparent);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 60%);
+}
+
+.dark .surface {
+  background: linear-gradient(to bottom, oklch(1 0 0 / 8%), transparent);
+}
+
+/* At least 180rem wide, so the ripples keep their long wavelength on a phone. */
+.ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max(200%, 180rem);
+  height: 1.75rem;
+  animation: ripple-drift var(--dur, 44s) linear infinite;
+}
+
+@keyframes ripple-drift {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Sunlight (or moonlight) fanning down from the surface. */
+.rays {
+  position: absolute;
+  inset: 0;
+  transform-origin: 70% -22%;
+  background: conic-gradient(
+    from 146deg at 70% -22%,
+    transparent 0deg,
+    oklch(1 0 0 / 7%) 5deg,
+    transparent 11deg,
+    transparent 16deg,
+    oklch(1 0 0 / 5%) 20deg,
+    transparent 26deg,
+    transparent 31deg,
+    oklch(1 0 0 / 9%) 38deg,
+    transparent 46deg,
+    transparent 51deg,
+    oklch(1 0 0 / 4%) 56deg,
+    transparent 63deg,
+    transparent 360deg
+  );
+  mask-image: linear-gradient(to bottom, transparent, #000 9%, transparent 90%);
+  animation: rays-sway 13s ease-in-out infinite alternate;
+}
+
+.rays-slow {
+  transform-origin: 58% -30%;
+  background: conic-gradient(
+    from 152deg at 58% -30%,
+    transparent 0deg,
+    oklch(1 0 0 / 4%) 7deg,
+    transparent 15deg,
+    transparent 24deg,
+    oklch(1 0 0 / 6%) 31deg,
+    transparent 40deg,
+    transparent 360deg
+  );
+  animation-duration: 19s;
+  animation-direction: alternate-reverse;
+}
+
+.dark .rays {
+  opacity: 0.55;
+}
+
+@keyframes rays-sway {
+  from {
+    transform: rotate(-2.5deg);
+  }
+  to {
+    transform: rotate(2.5deg);
+  }
+}
+
+/* Ambient loops rest while their part of the page is off screen. */
+[data-paused="true"] :is(.rays, .ripple) {
+  animation-play-state: paused;
+}
+
+/* Suspended particles in the water column, the kind a dive light picks out. */
+.mote {
+  position: absolute;
+  width: var(--s, 2px);
+  height: var(--s, 2px);
+  border-radius: 50%;
+  background: oklch(1 0 0 / var(--a, 0.3));
+  animation: mote-drift var(--dur, 30s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+@keyframes mote-drift {
+  to {
+    transform: translate3d(var(--dx, 24px), var(--dy, -60px), 0);
+  }
+}
+
+.diver-photo {
+  mask-image: radial-gradient(closest-side, #000 42%, transparent 100%);
+}
+
+.dark .diver-photo {
+  filter: brightness(0.82) saturate(0.92);
+}
+
+/* ---------- Torch card: a dive light that follows the pointer ---------- */
+
+.torch-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--card);
+  transition:
+    border-color 0.3s var(--e-quart),
+    translate 0.5s var(--e-expo);
+}
+
+.torch-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    26rem circle at var(--tx, 50%) var(--ty, 0%),
+    oklch(0.95 0.03 230 / 13%),
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity 0.45s var(--e-quart);
+  pointer-events: none;
+}
+
+.torch-card:hover,
+.torch-card:focus-within {
+  border-color: oklch(1 0 0 / 38%);
+}
+
+.torch-card:hover::before,
+.torch-card:focus-within::before {
+  opacity: 1;
+}
+
+/* Water eats colour; the torch brings it back. Hover-capable devices only. */
+@media (hover: hover) {
+  .torch-card:hover {
+    translate: 0 -4px;
+  }
+
+  .torch-media img {
+    filter: saturate(0.5) brightness(0.9);
+    transition:
+      filter 0.6s var(--e-quart),
+      scale 0.9s var(--e-expo);
+  }
+
+  .torch-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--water-1);
+    mix-blend-mode: color;
+    opacity: 0.3;
+    transition: opacity 0.6s var(--e-quart);
+    pointer-events: none;
+  }
+
+  .torch-card:hover .torch-media img,
+  .torch-card:focus-within .torch-media img {
+    filter: none;
+    scale: 1.03;
+  }
+
+  .torch-card:hover .torch-media::after,
+  .torch-card:focus-within .torch-media::after {
+    opacity: 0;
+  }
+}
+
+/* A log marker pings once when its entry is reached. */
+.log-marker[data-logged="true"]::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px solid var(--signal);
+  animation: marker-ping 1.1s var(--e-quart) both;
+}
+
+@keyframes marker-ping {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+/* Entrance for content that mounts on demand (tab panels). */
+.rise-in {
+  animation: hero-fade 0.6s var(--e-quart) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* ---------- Scroll reveals ----------
+   Content is visible by default. Reveal.tsx hides only what is still below
+   the fold after hydration, so nothing depends on JS to be readable. */
+
+[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+[data-reveal="shown"] {
+  transition:
+    opacity 0.8s var(--e-quart),
+    transform 0.9s var(--e-expo);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* The wipe and the title clip their children, not the observed element: a fully
+   clipped element never counts as intersecting, so it would never be revealed. */
+[data-reveal="hidden"]:is([data-reveal-kind="wipe"], [data-reveal-kind="title"]) {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal="hidden"][data-reveal-kind="wipe"] > * {
+  clip-path: inset(0 0 100% 0);
+  scale: 1.06;
+}
+
+[data-reveal="shown"][data-reveal-kind="wipe"] > * {
+  clip-path: inset(0);
+  transition:
+    clip-path 1.2s var(--e-expo),
+    scale 1.6s var(--e-expo);
+}
+
+/* Section titles rise out of a mask, like the name in the hero, and settle from
+   wide to the width their depth allows. */
+.title-mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.08em 0.2em;
+  margin-block: -0.08em -0.2em;
+}
+
+.title-line {
+  display: block;
+}
+
+[data-reveal="hidden"][data-reveal-kind="title"] .title-line {
+  transform: translateY(112%);
+}
+
+[data-reveal="hidden"][data-reveal-kind="title"] .title-lead {
+  opacity: 0;
+}
+
+[data-reveal="shown"][data-reveal-kind="title"] .title-line {
+  transition: transform 1.1s var(--e-expo);
+}
+
+[data-reveal="shown"][data-reveal-kind="title"] .title-lead {
+  transition: opacity 0.8s var(--e-quart) 0.15s;
+}
+
+@media (min-width: 40rem) {
+  [data-reveal="hidden"][data-reveal-kind="title"] {
+    --wdth-shift: 16;
+  }
+
+  [data-reveal="shown"][data-reveal-kind="title"] {
+    transition: --wdth-shift 1.4s var(--e-expo);
+  }
+}
+
+/* ---------- Theme switch: the new theme spreads from the toggle ---------- */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 0;
+}
+
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .mote,
+  .sounding-line::after,
+  .log-marker::after {
+    display: none;
   }
 }

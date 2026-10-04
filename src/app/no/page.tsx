@@ -86,9 +86,9 @@ export default function NoPage() {
 
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen px-4">
+        <div className="water flex min-h-svh flex-col items-center justify-center bg-abyss px-4">
             {isLoading ? (
-                <p className="text-xl md:text-2xl text-muted animate-pulse">
+                <p className="text-xl md:text-2xl text-muted-foreground animate-pulse">
                     thinking about what you just said...
                 </p>
             ) : data ? (

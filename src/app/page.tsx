@@ -4,8 +4,19 @@ import Projects from "@/components/Projects";
 import Contacts from "@/components/Contacts";
 import Services from "@/components/Services";
 import Experience from "@/components/Experience";
+import Water from "@/components/Water";
+import Diver from "@/components/Diver";
+import DepthGauge from "@/components/DepthGauge";
 import { obj } from "@/data";
 
+// The sections the depth gauge marks on its ruler, in dive order.
+const waypoints = [
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "services", label: "Services" },
+  { id: "experience", label: "Log" },
+  { id: "contatti", label: "Contact" },
+];
 
 export default function Home() {
   return (
@@ -19,16 +30,17 @@ export default function Home() {
         button2={obj.button2}
         icon={obj.icon}
         socials={obj.socials}
-        classname="brightness-75"
       />
-      <div className="h-20" />
-      <About />
-      <Projects />
-      <Services />
-      <div className="h-20" />
-      <Experience />
-      <Contacts />
-      <div id="spotify" className="hidden">Music</div>
+      <Water>
+        <Diver descendTo={obj.icon.key ? obj.icon.link : undefined} />
+        <About />
+        <Projects />
+        <Services />
+        <Experience />
+        <Contacts />
+        <div id="spotify" className="hidden">Music</div>
+      </Water>
+      <DepthGauge waypoints={waypoints} />
     </>
   );
 }

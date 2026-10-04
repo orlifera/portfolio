@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Archivo, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 import BackToTop from "@/components/BackToTop";
+
+// Archivo carries a width axis: headings narrow with depth (see globals.css).
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  axes: ["wdth"],
+});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -115,17 +122,21 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body
-        className={`${geistMono.className} w-full overflow-x-hidden antialiased bg-linear-to-b from-background via-muted-foreground to-foreground text-foreground flex flex-col px-4`}
-      >
+      <body className={`${archivo.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-modal focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          >
+            Skip to content
+          </a>
           <Nav />
-          {children}
+          <main id="main">{children}</main>
           <Footer />
           <Toaster richColors position="top-center" />
           <BackToTop />

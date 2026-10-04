@@ -1,27 +1,43 @@
 "use client";
 
-import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
-import Link from "next/link";
+import { useState } from "react";
+import { ArrowUpRight, Check, LoaderCircle, Mail, Phone, Send } from "lucide-react";
+import { IconBrandGithub, IconBrandInstagram, IconBrandLinkedin } from "@tabler/icons-react";
 import { BsWhatsapp } from "react-icons/bs";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { BiPaperPlane } from "react-icons/bi";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import Reveal from "@/components/Reveal";
+import SectionHeader from "@/components/SectionHeader";
 import { toast } from "sonner";
 
-export default function Contacts() {
-    const [loading, setLoading] = useState(false);
+const direct = [
+    { href: "mailto:orlandovm.ferazzani@gmail.com", label: "orlandovm.ferazzani@gmail.com", icon: Mail },
+    { href: "tel:+393927958165", label: "+39 392 795 8165", icon: Phone },
+    { href: "https://wa.me/393927958165", label: "WhatsApp", icon: BsWhatsapp },
+];
 
+const socials = [
+    { href: "https://www.linkedin.com/in/orlando-v-m-ferazzani/", label: "LinkedIn", icon: IconBrandLinkedin },
+    { href: "https://instagram.com/oferazzani125", label: "Instagram", icon: IconBrandInstagram },
+    { href: "https://github.com/orlifera", label: "GitHub", icon: IconBrandGithub },
+];
+
+const fieldClass =
+    "h-12 rounded-lg border-input bg-foreground/5 px-4 text-base transition-[border-color,box-shadow,background-color] duration-200 placeholder:text-muted-foreground/80 hover:border-foreground/50 focus-visible:bg-foreground/10 md:text-base";
+
+type Status = "idle" | "sending" | "sent";
+
+export default function Contacts() {
+    const [status, setStatus] = useState<Status>("idle");
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setLoading(true);
+        setStatus("sending");
 
         const form = e.currentTarget;
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+        const data = Object.fromEntries(new FormData(form).entries());
 
         try {
             const res = await fetch("/api/contact", {
@@ -29,185 +45,110 @@ export default function Contacts() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
-
             const result = await res.json();
 
             if (res.ok && result.success) {
-                const { name, lastname, email, message } = data;
-                void lastname
-                void email
-                void message;
-                toast.success(`Grazie ${name}! Il tuo messaggio è stato inviato con successo!`);
+                toast.success(`Thanks ${data.name}! Your message is on its way.`);
                 form.reset();
+                setStatus("sent");
+                setTimeout(() => setStatus("idle"), 3000);
                 return;
             }
-
-            toast.error(result.error || "Errore durante l'invio. Riprova più tardi.");
-        } finally {
-            setLoading(false);
+            throw new Error("send failed");
+        } catch {
+            toast.error("That didn't go through. Try again, or email me directly.");
+            setStatus("idle");
         }
     };
 
-
     return (
-        <div
-            id="contatti"
-            className="min-h-screen flex flex-col gap-6 px-4 py-8 md:grid md:grid-cols-2 md:gap-8 md:px-12 lg:px-20 items-center justify-center"
-        >
-            {/* Left block */}
-            <div className="flex h-[70%] flex-col justify-center items-center border border-ring/50 rounded-lg bg-muted-foreground/30 p-6">
-                <h2 className="text-lg sm:text-xl text-primary-foreground mb-1">
-                    I promise I&apos;ll be quick
-                </h2>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-primary-foreground mb-6 text-center">
-                    Get in Touch
-                </h1>
+        <section id="contatti" data-depth="5" className="pb-[clamp(4rem,9vw,7rem)] pt-[clamp(4.5rem,11vw,9rem)]">
+            <div className="shell grid gap-x-16 gap-y-14 lg:grid-cols-12">
+                <div className="min-w-0 lg:col-span-5">
+                    <SectionHeader lead="I promise I'll be quick" title="Get in touch" />
 
-                <ul className="flex flex-col gap-4 w-full max-w-sm">
-                    <li>
-                        <Link
-                            href="mailto:orlandovm.ferazzani@gmail.com"
-                            className="hover:underline text-base sm:text-lg text-primary-foreground flex items-center gap-2"
-                        >
-                            <Mail className="shrink-0" />
-                            <span className="truncate">orlandovm.ferazzani@gmail.com</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="tel:+393927958165"
-                            className="hover:underline text-base sm:text-lg text-primary-foreground flex items-center gap-2"
-                        >
-                            <Phone className="shrink-0" /> +39 392 795 8165
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="https://wa.me/393927958165"
-                            className="hover:underline text-base sm:text-lg text-primary-foreground flex items-center gap-2"
-                        >
-                            <BsWhatsapp className="shrink-0" /> WhatsApp
-                        </Link>
-                    </li>
-                </ul>
+                    <ul className="mt-10 border-t">
+                        {direct.map(({ href, label, icon: Icon }, index) => (
+                            <Reveal as="li" key={href} index={index} className="border-b">
+                                <a
+                                    href={href}
+                                    className="group flex items-center gap-4 py-4 transition-colors duration-200 hover:text-signal"
+                                >
+                                    <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-secondary transition-colors duration-200 group-hover:bg-signal group-hover:text-signal-foreground">
+                                        <Icon className="size-5" aria-hidden />
+                                    </span>
+                                    <span className="min-w-0 text-base font-semibold [overflow-wrap:anywhere] sm:text-lg">
+                                        {label.includes("@") ? <>{label.split("@")[0]}@<wbr />{label.split("@")[1]}</> : label}
+                                    </span>
+                                    <ArrowUpRight
+                                        aria-hidden
+                                        className="ml-auto size-5 shrink-0 -translate-x-1 translate-y-1 opacity-0 transition-[opacity,translate] duration-300 ease-out-expo group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+                                    />
+                                </a>
+                            </Reveal>
+                        ))}
+                    </ul>
 
-                <div className="flex flex-wrap gap-4 justify-center mt-8 pt-6 border-t border-ring w-full max-w-sm">
-                    <Link
-                        href="https://www.linkedin.com/in/orlando-v-m-ferazzani/"
-                        className="hover:underline text-base text-primary-foreground flex items-center gap-2"
-                    >
-                        <Linkedin className="shrink-0" /> Linkedin
-                    </Link>
-                    <Link
-                        href="https://instagram.com/oferazzani125"
-                        className="hover:underline text-base text-primary-foreground flex items-center gap-2"
-                    >
-                        <Instagram className="shrink-0" /> Instagram
-                    </Link>
-                    <Link
-                        href="https://github.com/orlifera"
-                        className="hover:underline text-base text-primary-foreground flex items-center gap-2"
-                    >
-                        <Github className="shrink-0" /> Github
-                    </Link>
+                    <ul className="mt-8 flex flex-wrap gap-2">
+                        {socials.map(({ href, label, icon: Icon }) => (
+                            <li key={href}>
+                                <a
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex h-11 items-center gap-2 rounded-md border px-4 text-sm font-semibold transition-colors duration-200 hover:border-foreground/50 hover:bg-accent"
+                                >
+                                    <Icon className="size-4" aria-hidden />
+                                    {label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-            </div>
 
-            {/* Right block */}
-            <div className=" h-[70%] flex flex-col justify-center items-center border border-ring/50 rounded-lg p-6">
-                <h2 className="text-lg sm:text-xl text-primary-foreground mb-1">
-                    Feel free to reach out
-                </h2>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-primary-foreground mb-6 text-center">
-                    Shoot me an Email
-                </h1>
+                <form onSubmit={handleSubmit} className="min-w-0 rounded-xl border bg-card p-6 sm:p-8 lg:col-span-7">
+                    <p className="text-muted-foreground">Feel free to reach out</p>
+                    <h3 className="mt-1 text-2xl font-bold sm:text-3xl">Shoot me an Email</h3>
 
-                <form className="w-full max-w-lg" onSubmit={handleSubmit}>
-                    <fieldset className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+                    <div className="mt-8 grid gap-5 sm:grid-cols-2">
                         <div className="flex flex-col gap-2">
-                            <Label htmlFor="name" className="text-primary-foreground">
-                                Name
-                            </Label>
-                            <Input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Your Name"
-                                className="bg-muted-foreground/30 text-primary-foreground border border-ring/50 focus:border-primary-foreground focus:ring-0"
-                                required
-                            />
+                            <Label htmlFor="name">Name</Label>
+                            <Input type="text" id="name" name="name" autoComplete="given-name" placeholder="Your Name" className={fieldClass} required />
                         </div>
-
                         <div className="flex flex-col gap-2">
-                            <Label htmlFor="lastname" className="text-primary-foreground">
-                                Last Name
-                            </Label>
-                            <Input
-                                type="text"
-                                id="lastname"
-                                name="lastname"
-                                placeholder="Your Last Name"
-                                className="bg-muted-foreground/30 text-primary-foreground border border-ring/50 focus:border-primary-foreground focus:ring-0"
-                                required
-                            />
+                            <Label htmlFor="lastname">Last Name</Label>
+                            <Input type="text" id="lastname" name="lastname" autoComplete="family-name" placeholder="Your Last Name" className={fieldClass} required />
                         </div>
-                    </fieldset>
-
-                    <fieldset className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
                         <div className="flex flex-col gap-2">
-                            <Label htmlFor="email" className="text-primary-foreground">
-                                Email
-                            </Label>
-                            <Input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Your Email"
-                                className="bg-muted-foreground/30 text-primary-foreground border border-ring/50 focus:border-primary-foreground focus:ring-0"
-                                required
-                            />
+                            <Label htmlFor="email">Email</Label>
+                            <Input type="email" id="email" name="email" autoComplete="email" placeholder="Your Email" className={fieldClass} required />
                         </div>
-
                         <div className="flex flex-col gap-2">
-                            <Label htmlFor="phone" className="text-primary-foreground">
-                                Phone
+                            <Label htmlFor="phone">
+                                Phone <span className="font-normal text-muted-foreground">(optional)</span>
                             </Label>
-                            <Input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="Your Phone Number"
-                                className="bg-muted-foreground/30 text-primary-foreground border border-ring/50 focus:border-primary-foreground focus:ring-0"
-                                inputMode="numeric"
-                            />
+                            <Input type="tel" id="phone" name="phone" autoComplete="tel" inputMode="tel" placeholder="Your Phone Number" className={fieldClass} />
                         </div>
-                    </fieldset>
+                        <div className="flex flex-col gap-2 sm:col-span-2">
+                            <Label htmlFor="message">Message</Label>
+                            <Textarea id="message" name="message" placeholder="Your Message" className={`${fieldClass} h-auto min-h-40 resize-y py-3`} required />
+                        </div>
+                    </div>
 
-                    <fieldset className="flex flex-col gap-2 my-4">
-                        <Label htmlFor="message" className="text-primary-foreground">
-                            Message
-                        </Label>
-                        <Textarea
-                            id="message"
-                            name="message"
-                            placeholder="Your Message"
-                            className="bg-muted-foreground/30 text-primary-foreground border border-ring/50 focus:border-primary-foreground focus:ring-0 rounded-md p-4 min-h-[150px] sm:min-h-[200px] resize-none"
-                            required
-                        />
-                    </fieldset>
-
-                    <div className="flex justify-end mt-6">
-                        <Button
-                            type="submit"
-                            variant="outline"
-                            className="bg-primary-foreground dark:bg-muted hover:text-black text-primary font-semibold py-2 px-4 rounded-lg"
-                            disabled={loading}
-                        >
-                            {loading ? "Sending..." : <>Send <BiPaperPlane className="ml-2" /></>}
+                    <div className="mt-6 flex justify-end">
+                        <Button type="submit" size="lg" className="group min-w-36" disabled={status === "sending"}>
+                            {status === "sending" && <>Sending <LoaderCircle className="animate-spin" /></>}
+                            {status === "sent" && <>Sent <Check /></>}
+                            {status === "idle" && (
+                                <>
+                                    Send
+                                    <Send className="transition-transform duration-300 ease-out-expo group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                                </>
+                            )}
                         </Button>
                     </div>
                 </form>
             </div>
-        </div>
+        </section>
     );
 }

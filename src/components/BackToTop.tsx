@@ -1,42 +1,42 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import { Button } from './ui/button'
+import { useState } from 'react'
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { ArrowUp } from 'lucide-react'
+import { Button } from './ui/button'
 
 export default function BackToTop() {
     const [isVisible, setIsVisible] = useState(false)
+    const { scrollY } = useScroll()
 
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.scrollY > 300) {
-                setIsVisible(true)
-            } else {
-                setIsVisible(false)
-            }
-        }
-
-        window.addEventListener('scroll', toggleVisibility)
-        return () => window.removeEventListener('scroll', toggleVisibility)
-    }, [])
+    useMotionValueEvent(scrollY, 'change', (y) => setIsVisible(y > 600))
 
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
     }
 
-    if (!isVisible) return null
-
     return (
-        <Button
-            onClick={scrollToTop}
-            className="fixed focus:outline-2-blue-500 right-4 z-50 rounded-full p-2 shadow-lg md:bottom-4 bottom-15 bg-accent text-primary"
-            aria-label="Torna su"
-        >
-            <ArrowUp className="h-6 w-6" />
-            <span className="sr-only">Torna su</span>
-        </Button>
+        <AnimatePresence>
+            {isVisible && (
+                <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 12, transition: { duration: 0.2 } }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="water fixed bottom-4 right-4 z-gauge"
+                >
+                    <Button
+                        variant="outline"
+                        onClick={scrollToTop}
+                        className="group h-11 bg-[oklch(0.17_0.055_263/0.92)] px-4 shadow-[0_8px_30px_-8px_oklch(0.05_0.03_265/0.8)] backdrop-blur-md hover:bg-[oklch(0.22_0.06_263)] has-[>svg]:px-4"
+                        aria-label="Back to the surface"
+                    >
+                        <ArrowUp className="transition-transform duration-300 ease-out-expo group-hover:-translate-y-0.5" />
+                        <span className="max-sm:sr-only">Surface</span>
+                    </Button>
+                </motion.div>
+            )}
+        </AnimatePresence>
     )
-} 
+}

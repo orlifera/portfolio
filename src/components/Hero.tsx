@@ -1,81 +1,96 @@
 "use client"
 
-import { HeroType } from "@/types"
-import Image from "next/image"
-import { ArrowDown, Download, Globe, Instagram, Linkedin } from "lucide-react"
+import { useRef, useState, type CSSProperties } from "react"
 import Link from "next/link"
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
+import { Download, Globe } from "lucide-react"
+import { IconBrandInstagram, IconBrandLinkedin } from "@tabler/icons-react"
+import { HeroType } from "@/types"
 import { Button } from "./ui/button"
-import { useState } from "react"
 import CVDownloadModal from "./CVDownloadModal"
 
-export default function Hero(obj: HeroType) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+const socials = [
+    { href: "https://instagram.com/oferazzani125", label: "Instagram", icon: IconBrandInstagram },
+    { href: "https://www.linkedin.com/in/orlando-v-m-ferazzani/", label: "LinkedIn", icon: IconBrandLinkedin },
+    { href: "https://mltech.store", label: "ML Tech store", icon: Globe },
+]
 
-    const handleCVClick = () => {
-        setIsModalOpen(true);
-    };
+const step = (i: number) => ({ "--i": i }) as CSSProperties
+
+/** The part of the page above the waterline: name, pitch and the two main actions. */
+export default function Hero(obj: HeroType) {
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const ref = useRef<HTMLElement>(null)
+    const reduceMotion = useReducedMotion()
+
+    // Pressure: the name narrows as the surface scrolls away.
+    const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
+    const width = useTransform(scrollYProgress, [0, 1], [125, reduceMotion ? 125 : 80])
+
+    const words = obj.title.split(" ")
+    const lastName = words.pop()
+    const firstNames = words.join(" ")
+
     return (
-        <div className="relative px-2 w-full md:min-h-screen h-svh mx-auto flex flex-col items-center justify-center text-primary mt-8 lg:mt-0">
-            <div className="relative z-20 text-center flex flex-col items-center justify-center px-6 max-w-4xl">
-                <div className="relative md:w-64 md:h-64 h-48 w-48 rounded-full mb-6 overflow-hidden">
-                    <Image
-                        src={obj.src}
-                        alt="Banner Background"
-                        fill
-                        objectFit="cover"
-                    />
-                </div>
-                <p className="md:text-2xl font-semibold mb-4">Hello🤙🏽 I&apos;m</p>
-                <h1 className="md:text-5xl text-2xl font-extrabold mb-6">{obj.title}</h1>
-                <p className="text-md w-full max-w-2xl mx-auto font-light mb-4">
-                    {obj.subtitle}
+        <section
+            ref={ref}
+            className={`hero-sky relative isolate flex min-h-[56svh] flex-col justify-end overflow-hidden pb-10 pt-24 sm:pb-14 sm:pt-28 ${obj.classname ?? ""}`}
+        >
+            <div className="shell">
+                <p className="hero-fade mb-3 font-mono text-sm sm:mb-4 sm:text-lg" style={step(0)}>
+                    Hello 🤙🏽 I&apos;m
                 </p>
-                <div className='flex flex-row items-center justify-center gap-4'>
-                    {obj.button1 &&
-                        <Button variant={"default"} className="mt-2 p-6 rounded-lg" asChild>
-                            <Link href={obj.button1.link}>
-                                {obj.button1.text}
-                            </Link>
-                        </Button>
-                    }
-                    {
-                        obj.button2 &&
-                        <Button
-                            variant={"outline"}
-                            className="mt-2 p-6 rounded-lg text-primary"
-                            onClick={handleCVClick}
-                        >
-                            {obj.button2.text}
-                            <Download className="ml-2 h-4 w-4" />
-                        </Button>
-                    }
+                <motion.h1
+                    className="display hero-name text-[clamp(1.75rem,min(10.8vw,12.5svh),6rem)]"
+                    style={{ "--wdth": width } as CSSProperties}
+                >
+                    <span className="hero-mask">
+                        <span className="hero-line" style={step(1)}>{firstNames}</span>
+                    </span>
+                    <span className="hero-mask">
+                        <span className="hero-line" style={step(2)}>{lastName}</span>
+                    </span>
+                </motion.h1>
+
+                <div className="mt-6 flex flex-col gap-6 sm:mt-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+                    <p className="hero-fade max-w-xl text-base text-muted-foreground sm:text-lg" style={step(4)}>
+                        {obj.subtitle}
+                    </p>
+
+                    <div className="hero-fade flex flex-wrap items-center gap-3" style={step(5)}>
+                        {obj.button1 && (
+                            <Button size="lg" asChild>
+                                <Link href={obj.button1.link}>{obj.button1.text}</Link>
+                            </Button>
+                        )}
+                        {obj.button2 && (
+                            <Button variant="outline" size="lg" onClick={() => setIsModalOpen(true)}>
+                                {obj.button2.text}
+                                <Download />
+                            </Button>
+                        )}
+                        {obj.socials && (
+                            <ul className="flex items-center sm:ml-2">
+                                {socials.map(({ href, label, icon: Icon }) => (
+                                    <li key={href}>
+                                        <a
+                                            href={href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={label}
+                                            className="flex size-11 items-center justify-center rounded-md text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground"
+                                        >
+                                            <Icon className="size-5" />
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
                 </div>
             </div>
 
-            {/* <div className='absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/70 z-10' /> */}
-            {obj.socials &&
-                <ul className='absolute bottom-6 m-4 gap-4 z-50 flex flex-row right-0 text-primary'>
-                    <li>
-                        <Link href='https://instagram.com/oferazzani125'><Instagram className=" hover:cursor-pointer " /></Link>
-                    </li>
-                    <li><Link href='https://www.linkedin.com/in/orlando-v-m-ferazzani/'><Linkedin className="hover:cursor-pointer " /></Link></li>
-                    <li>
-                        <Link href='https://mltech.store'><Globe className="hover:cursor-pointer" /></Link>
-                    </li>
-                </ul>}
-
-            {
-                obj.icon.key === true &&
-                <div className='absolute bottom-10 z-20 animate-bounce items-center justify-center'>
-                    <Link href={obj.icon.link}><ArrowDown /></Link>
-                </div>
-            }
-
-            {/* CV Download Modal */}
-            <CVDownloadModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-            />
-        </div >
+            <CVDownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </section>
     )
 }

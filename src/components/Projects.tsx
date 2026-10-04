@@ -1,42 +1,34 @@
 import { projects } from '@/data/';
+import HonestWork from './HonestWork';
 import ProjectCard from './ProjectCard';
-import Image from 'next/image';
-
+import Reveal from './Reveal';
+import SectionHeader from './SectionHeader';
 
 export default function Projects() {
   return (
-    <div id='projects' className='min-h-screen mt-8 flex flex-col w-full'>
-      <h2 className='text-xl mt-6 mx-auto text-center px-4' > Hey, take a look around. {" "}
-        <span className='group'>
-          It&apos;s not much, but it&apos; honest work.
-          <div className='w-[40%] hidden group-hover:block flex-col items-center mx-auto justify-center mt-6'>
-            <Image
-              src="/easteregg.avif"
-              alt="Easter Egg"
-              width={300}
-              height={300}
-              className='rounded w-full mx-auto'
-            />
-            <p className='text-center text-sm'>Hey, you found the easter egg! 🥚</p>
-          </div>
-        </span>
+    <section id='projects' data-depth='2' className='py-[clamp(4.5rem,11vw,9rem)]'>
+      <div className='shell'>
+        <SectionHeader
+          lead={<p>Hey, take a look around. <HonestWork /></p>}
+          title="My projects"
+        />
 
-      </h2>
-      <h1 className='text-4xl font-extrabold text-center my-8'>My Projects</h1>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-hidden'>
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={index}
-            title={project.title}
-            description={project.description}
-            tags={project.tags}
-            image={project.image}
-            githubLink={project.githubLink}
-            demoLink={project.demoLink}
-            wip={project.wip}
-          />
-        ))}
+        <ul className='mt-12 grid grid-cols-[repeat(auto-fit,minmax(min(19rem,100%),1fr))] gap-5 sm:mt-16 sm:gap-6'>
+          {projects.map((project, index) => (
+            <Reveal as='li' key={project.title} index={index % 3}>
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                tags={project.tags}
+                image={project.image}
+                githubLink={project.githubLink}
+                demoLink={project.demoLink}
+                wip={project.wip}
+              />
+            </Reveal>
+          ))}
+        </ul>
       </div>
-    </div>
+    </section>
   )
 }

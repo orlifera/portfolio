@@ -1,4 +1,4 @@
-import { AboutCardType, experienceType, OfferCardType, timelineType } from "@/types";
+import { AboutCardType, experienceType, OfferCardType } from "@/types";
 import { FaCode, FaUserGraduate } from "react-icons/fa6";
 import { HeroType } from "@/types";
 import {
@@ -15,8 +15,6 @@ import {
 } from "react-icons/si";
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { ProjectCardType } from "@/types";
-import Image from "next/image";
-import SkillPill from "@/components/SkillPill";
 import { JSX } from "react";
 import { TbBrandReactNative, TbScubaDiving } from "react-icons/tb";
 
@@ -32,8 +30,8 @@ export const cards: AboutCardType[] = [
   {
     icon: <FaUserGraduate className='h-8 w-8' />,
     title: "Education and Experience",
-    description: "BsC in Computer Science from University of Padua, ~2 years of experience as a self-taught developer",
-    tags: ["BsC", "Computer Science", "Web Development"]
+    description: "BSc in Computer Science from University of Padua, ~2 years of experience as a self-taught developer",
+    tags: ["BSc", "Computer Science", "Web Development"]
   }, {
 
     icon: <TbScubaDiving className='h-8 w-8' />,
@@ -46,8 +44,8 @@ export const cards: AboutCardType[] = [
 
 export const obj: HeroType = {
   title: "Orlando V. M. Ferazzani",
-  subtitle: "Fullstack Developer based in Padua. I have a BsC in Computer Science, with a couple of years of self-taught experience in web development.",
-  src: "/uw.PNG",
+  subtitle: "Fullstack Developer based in Padua. I have a BSc in Computer Science, with a couple of years of self-taught experience in web development.",
+  src: "/uw.webp",
   alt: "Profile Image",
   button1: {
     text: "See My Work",
@@ -55,7 +53,7 @@ export const obj: HeroType = {
   },
   button2: {
     text: "My CV",
-    link: "/CV_ENG.pdf"
+    link: "/CV_Eng.pdf"
   },
   icon: { key: true, link: "#about" },
   socials: true
@@ -142,7 +140,7 @@ export const projects: ProjectCardType[] = [
   },
   {
     title: "Thinky",
-    description: "My BsC Thesis project. An interactive WebApp made for UniPD's OpenDay activities. It's built to be used strictly under guidance of a professor, and its purpose is to show students that computer science is not so hard, through a series of interactive exercises about syncronization problems.",
+    description: "My BSc thesis project. An interactive WebApp made for UniPD's OpenDay activities. It's built to be used strictly under guidance of a professor, and its purpose is to show students that computer science is not so hard, through a series of interactive exercises about synchronization problems.",
     tags: ["React", "TypeScript", "TailwindCSS", "Firebase", "NextJS", "Netlify", "ShadcnUI"],
     image: ["/thinky1.webp", "/thinky2.webp", "/thinky3.webp", "/thinky4.webp", "/thinky5.webp", "/thinky6.webp", "/thinky7.webp"],
     githubLink: "https://github.com/orlifera/Thinky",
@@ -151,7 +149,7 @@ export const projects: ProjectCardType[] = [
   },
   {
     title: "Feeldive diving center",
-    description: "Modern website built for the diving center I work at. It features a e-commerce system to buy courses, and all other info about the center",
+    description: "Modern website built for the diving center I work at. It features an e-commerce system to buy courses, and all other info about the center",
     tags: ["NextJS", "TailwindCSS", "ShadcnUI", "Stripe", "TypeScript"],
     image: ["/feeldive.webp", "/feeldive2.webp"],
     githubLink: "https://github.com/orlifera/feeldive",
@@ -159,16 +157,16 @@ export const projects: ProjectCardType[] = [
     wip: true,
   }, {
     title: "Quote Generator",
-    description: "A simple PC Quote generator app that I personally use to created quotes for my clients.",
+    description: "A simple PC Quote generator app that I personally use to create quotes for my clients.",
     tags: ["React", "Typescript", "TailwindCSS", "Netlify"],
-    image: ["/quotegen1.webp", "/quotegen2.webp"],
+    image: ["/quotegen1.webp", "/quotgen2.webp"],
     githubLink: "https://github.com/orlifera/quotegen",
     demoLink: "https://quotegenml.netlify.app/",
     wip: true,
   },
   {
     title: "Parkito Website",
-    description: "Main website for the startup I'm currently working at. Parkito it's a rising reality in the short-term rental industry. We are like AirBnB but for private parkings.",
+    description: "Main website for the startup I'm currently working at. Parkito is a rising reality in the short-term rental industry. We are like AirBnB but for private parkings.",
     tags: ["NextJS", "Typescript", "TailwindCSS", "Netlify", "ShadcnUI"],
     image: ["/parkito-web.webp", "/parkito-web2.webp"],
     githubLink: "/no",
@@ -334,6 +332,7 @@ export const experienceData: experienceType[] = [
     company: "Parkito.app",
     description: "I joined Parkito.app as a FrontEnd Developer, where I worked on the development of the company's website and its Mobile App system. I was responsible for the implementation of the website's user interface and the integration of the user interface and user experience with the company's app.",
     image: "/parkito.webp",
+    logo: true,
     tags: ["Programming", "Typescript", "React", "NextJS", "TailwindCSS", "ShadcnUI", "Firebase", "Netlify", "API", "React Native"]
   },
   {
@@ -341,7 +340,7 @@ export const experienceData: experienceType[] = [
     position: "Bachelor's Degree in Computer Science",
     company: "University of Padua",
     description: "Completed a Bachelor's degree in Computer Science with a thesis on Web Development, gaining knowledge in programming, algorithms, data structures, and more. Developed skills in problem-solving, critical thinking, and teamwork.",
-    image: "/IMG_7993.webp",
+    image: "/img_7993.webp",
     tags: ["Programming", "Algorithms", "Data Structures", "Problem-Solving", "Critical Thinking", "Teamwork"]
   },
   {
@@ -350,6 +349,7 @@ export const experienceData: experienceType[] = [
     company: "ML Tech",
     description: "Decided to take a leap and start my own business, specializing in custom-built PCs and accessories. Gained experience in entrepreneurship, marketing, and customer service.",
     image: "/mllogo.webp",
+    logo: true,
     tags: ["Entrepreneurship", "Marketing", "Customer Service", "Leadership", "Business Development"]
   }, {
     year: "Jul, 2021",
@@ -361,40 +361,8 @@ export const experienceData: experienceType[] = [
     year: "Jun, 2019 - Curr.",
     position: "Divemaster and Deep scuba guide",
     company: "Feeldive Diving Center",
-    description: "Growing up on the sea, I developed a passion for diving and underwater exploration. In 2019, I became a Divemaster and Deep scuba guide at Feeldive Diving Center, where I assist instructors in training and guiding certified divers on underwater excursions. This role has allowed me to combine my love for the ocean with my skills in leadership and communication, in addition to saftey and responsability.",
-    image: "/uw.PNG",
+    description: "Growing up on the sea, I developed a passion for diving and underwater exploration. In 2019, I became a Divemaster and Deep scuba guide at Feeldive Diving Center, where I assist instructors in training and guiding certified divers on underwater excursions. This role has allowed me to combine my love for the ocean with my skills in leadership and communication, in addition to safety and responsibility.",
+    image: "/uw.webp",
     tags: ["Customer Service", "Communication", "Safety Procedures"]
   },
 ]
-
-export const timelineData: timelineType[] = experienceData.map((exp) => ({
-  title: `${exp.position} - ${exp.company} (${exp.year})`,
-  content: (
-    <div className="flex flex-col gap-4 w-full items-center justify-end">
-      <div className="md:w-1/3 flex flex-row items-center justify-center w-[50%]">
-        {
-          exp.image &&
-          <Image
-            src={exp.image}
-            width={300}
-            height={300}
-            alt={`${exp.year} - ${exp.position} at ${exp.company}`}
-            className="object-contain mb-2 rounded"
-          />
-        }
-      </div>
-      <div className="md:w-2/3">
-        <p className="mb-2 text-primary-foreground text-md font-semibold">{exp.description}</p>
-        <div className="flex flex-wrap gap-2">
-          {exp.tags.map((tag, index) => (
-            <SkillPill
-              key={index}
-              title={tag}
-              text="text-sm"
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  ),
-}));
